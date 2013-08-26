@@ -63,4 +63,8 @@ setup(
     url="https://bitbucket.org/micktwomey/pyiso8601",
     packages=["iso8601"],
     license="MIT",
+    classifiers=[
+        "Programming Language :: Python :: 2",
+        "Programming Language :: Python :: 3",
+    ],
 )
