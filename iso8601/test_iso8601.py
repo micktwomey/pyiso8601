@@ -1,4 +1,6 @@
-import iso8601
+from __future__ import absolute_import
+
+from iso8601 import iso8601
 
 def test_iso8601_regex():
     assert iso8601.ISO8601_REGEX.match("2006-10-11T00:14:33Z")
@@ -32,7 +34,7 @@ def test_parse_date_fraction():
 
 def test_parse_date_fraction_2():
     """From bug 6
-    
+
     """
     d = iso8601.parse_date("2007-5-7T11:43:55.328Z'")
     assert d.year == 2007
@@ -76,7 +78,7 @@ def test_parse_invalid_date2():
 
 def test_parse_no_timezone():
     """issue 4 - Handle datetime string without timezone
-    
+
     This tests what happens when you parse a date with no timezone. While not
     strictly correct this is quite common. I'll assume UTC for the time zone
     in this case.
@@ -98,7 +100,7 @@ def test_parse_no_timezone_different_default():
 
 def test_space_separator():
     """Handle a separator other than T
-    
+
     """
     d = iso8601.parse_date("2007-06-23 06:40:34.00Z")
     assert d.year == 2007

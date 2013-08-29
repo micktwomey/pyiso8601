@@ -9,9 +9,16 @@ datetime.datetime(2007, 1, 25, 12, 0, tzinfo=<iso8601.iso8601.Utc ...>)
 """
 
 from datetime import datetime, timedelta, tzinfo
+import sys
 import re
 
 __all__ = ["parse_date", "ParseError"]
+
+if sys.version_info >= (3, 0, 0):
+    _basestring = str
+else:
+    _basestring = basestring
+
 
 # Adapted from http://delete.me.uk/2005/03/iso8601.html
 ISO8601_REGEX = re.compile(r"(?P<year>[0-9]{4})(-(?P<month>[0-9]{1,2})(-(?P<day>[0-9]{1,2})"
@@ -86,7 +93,7 @@ def parse_date(datestring, default_timezone=UTC):
     default timezone specified in default_timezone is used. This is UTC by
     default.
     """
-    if not isinstance(datestring, basestring):
+    if not isinstance(datestring, _basestring):
         raise ParseError("Expecting a string %r" % datestring)
     m = ISO8601_REGEX.match(datestring)
     if not m:

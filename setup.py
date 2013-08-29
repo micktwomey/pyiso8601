@@ -16,6 +16,14 @@ datetime.datetime(2007, 1, 25, 12, 0, tzinfo=<iso8601.iso8601.Utc ...>)
 Changes
 =======
 
+0.1.5
+-----
+
+* Wow, it's alive! First update since 2007
+* Moved over to https://bitbucket.org/micktwomey/pyiso8601
+* Applied patch from https://code.google.com/p/pyiso8601/issues/detail?id=23 (thanks to zefciu), add support for python 3
+* Switched to py.test and tox for testing
+
 0.1.4
 -----
 
@@ -25,7 +33,7 @@ Changes
 0.1.3
 -----
 
-* Fixed the microsecond handling, the generated microsecond values were 
+* Fixed the microsecond handling, the generated microsecond values were
   way too small. Fixes issue 9.
 
 0.1.2
@@ -34,7 +42,7 @@ Changes
 * Adding ParseError to __all__ in iso8601 module, allows people to import it.
   Addresses issue 7.
 * Be a little more flexible when dealing with dates without leading zeroes.
-  This violates the spec a little, but handles more dates as seen in the 
+  This violates the spec a little, but handles more dates as seen in the
   field. Addresses issue 6.
 * Allow date/time separators other than T.
 
@@ -47,12 +55,12 @@ Changes
 
 setup(
     name="iso8601",
-    version="0.1.4",
+    version="0.1.5",
     description=long_description.split("\n")[0],
     long_description=long_description,
     author="Michael Twomey",
     author_email="micktwomey+iso8601@gmail.com",
-    url="http://code.google.com/p/pyiso8601/",
+    url="https://bitbucket.org/micktwomey/pyiso8601",
     packages=["iso8601"],
     license="MIT",
 )
