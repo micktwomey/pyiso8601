@@ -1,0 +1,5 @@
+syntax: glob
+build
+dist
+*.pyc
+iso8601.egg-info
