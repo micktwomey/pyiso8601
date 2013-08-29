@@ -13,7 +13,7 @@ Currently the following formats are handled:
 * 2006-01-01T00:00:00Z
 * 2006-01-01T00:00:00[+-]00:00
 
-I'll add more as I encounter them in my day to day life. Patches with 
+I'll add more as I encounter them in my day to day life. Patches with
 new formats and tests will be gratefully accepted of course :)
 
 References:
@@ -24,3 +24,9 @@ References:
   valid formats.
 
 See the LICENSE file for the license this package is released under.
+
+If you want more full featured parsing look at:
+
+- http://labix.org/python-dateutil - python-dateutil
+
+This was originally hosted at https://code.google.com/p/pyiso8601/
