@@ -93,6 +93,17 @@ def test_parse_no_timezone():
     assert d.microsecond == 0
     assert d.tzinfo == iso8601.UTC
 
+def test_parse_no_seconds():
+    d = iso8601.parse_date("1997-07-16T19:20+01:00")
+    assert d.year == 1997
+    assert d.month == 7
+    assert d.day == 16
+    assert d.hour == 19
+    assert d.minute == 20
+    assert d.second == 0
+    assert d.microsecond == 0
+    assert d.tzinfo.tzname(None) == "+01:00"
+
 def test_parse_no_timezone_different_default():
     tz = iso8601.FixedOffset(2, 0, "test offset")
     d = iso8601.parse_date("2007-01-01T08:00:00", default_timezone=tz)
