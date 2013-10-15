@@ -21,8 +21,10 @@ Changes
 
 * Wow, it's alive! First update since 2007
 * Moved over to https://bitbucket.org/micktwomey/pyiso8601
-* Applied patch from https://code.google.com/p/pyiso8601/issues/detail?id=23 (thanks to zefciu), add support for python 3
+* Add support for python 3. https://code.google.com/p/pyiso8601/issues/detail?id=23 (thanks to zefciu)
 * Switched to py.test and tox for testing
+* Make seconds optional in date format ("1997-07-16T19:20+01:00" now valid). https://bitbucket.org/micktwomey/pyiso8601/pull-request/1/make-the-inclusion-of-seconds-optional-in/diff (thanks to Chris Down)
+* Correctly raise ParseError for more invalid inputs (https://bitbucket.org/micktwomey/pyiso8601/issue/1/raise-parseerror-for-invalid-input) (thanks to manish.tomar)
 
 0.1.4
 -----
