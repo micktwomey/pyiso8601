@@ -134,7 +134,7 @@ def parse_timezone(matches, default_timezone=UTC):
     """
 
     if matches["timezone"] == "Z":
-        return default_timezone
+        return UTC
     # This isn't strictly correct, but it's common to encounter dates without
     # timezones so I'll assume the default (which defaults to UTC).
     # Addresses issue 4.

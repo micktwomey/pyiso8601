@@ -18,6 +18,14 @@ def test_parse_no_timezone_different_default():
     assert d == datetime.datetime(2007, 1, 1, 8, 0, 0, 0, tz)
     assert d.tzinfo == tz
 
+def test_parse_utc_different_default():
+    """Z should mean 'UTC', not 'default'.
+
+    """
+    tz = iso8601.FixedOffset(2, 0, "test offset")
+    d = iso8601.parse_date("2007-01-01T08:00:00Z", default_timezone=tz)
+    assert d == datetime.datetime(2007, 1, 1, 8, 0, 0, 0, iso8601.UTC)
+
 @pytest.mark.parametrize("invalid_date", [
     ("2013-10-",),
     ("2013-",),
