@@ -14,8 +14,8 @@ If you want more full featured parsing look at:
 
 - http://labix.org/python-dateutil - python-dateutil
 
-Home
-====
+Homepage
+========
 
 * https://bitbucket.org/micktwomey/pyiso8601/
 
@@ -34,6 +34,30 @@ Testing
 1. pip install -r dev-requirements.txt
 2. tox
 
+Note that you need all the pythons installed to perform a tox run (see below). Homebrew helps a lot on the mac.
+
+Alternatively, to test only with your current python:
+
+1. pip install -r dev-requirements.txt
+2. py.test --verbose iso8601
+
+Supported Python Versions
+=========================
+
+Tested against:
+
+- Python 2.6
+- Python 2.7
+- Python 3.2
+- Python 3.3
+- PyPy
+
+Python 3.0 and 3.1 are untested but should work.
+
+Jython is untested but should work.
+
+Python 2.5 is not supported (too old).
+
 Changes
 =======
 
@@ -46,6 +70,7 @@ Changes
 * Switched to py.test and tox for testing
 * Make seconds optional in date format ("1997-07-16T19:20+01:00" now valid). https://bitbucket.org/micktwomey/pyiso8601/pull-request/1/make-the-inclusion-of-seconds-optional-in/diff (thanks to Chris Down)
 * Correctly raise ParseError for more invalid inputs (https://bitbucket.org/micktwomey/pyiso8601/issue/1/raise-parseerror-for-invalid-input) (thanks to manish.tomar)
+* Support more variations of ISO 8601 dates, times and time zone specs.
 
 0.1.4
 -----
