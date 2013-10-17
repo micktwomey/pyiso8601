@@ -1,7 +1,9 @@
 # coding=UTF-8
 from __future__ import absolute_import
 
+import copy
 import datetime
+import pickle
 
 import pytest
 
@@ -60,3 +62,5 @@ def test_parse_valid_date(valid_date, expected_datetime):
     assert parsed.tzinfo == expected_datetime.tzinfo
     assert parsed == expected_datetime
     assert parsed.isoformat() == expected_datetime.isoformat()
+    copy.deepcopy(parsed)  # ensure it's deep copy-able
+    pickle.dumps(parsed)  # ensure it pickles

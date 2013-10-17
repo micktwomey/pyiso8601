@@ -82,6 +82,8 @@ class FixedOffset(tzinfo):
 
     """
     def __init__(self, offset_hours, offset_minutes, name):
+        self.__offset_hours = offset_hours  # Keep for later __getinitargs__
+        self.__offset_minutes = offset_minutes  # Keep for later __getinitargs__
         self.__offset = timedelta(hours=offset_hours, minutes=offset_minutes)
         self.__name = name
 
@@ -95,6 +97,9 @@ class FixedOffset(tzinfo):
         if isinstance(other, tzinfo):
             return other == self
         return False
+
+    def __getinitargs__(self):
+        return (self.__offset_hours, self.__offset_minutes, self.__name)
 
     def utcoffset(self, dt):
         return self.__offset
