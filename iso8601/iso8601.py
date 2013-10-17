@@ -13,6 +13,7 @@ from datetime import (
     timedelta,
     tzinfo
 )
+from decimal import Decimal
 import logging
 import sys
 import re
@@ -28,7 +29,8 @@ else:
 
 
 # Adapted from http://delete.me.uk/2005/03/iso8601.html
-ISO8601_REGEX = re.compile(r"""
+ISO8601_REGEX = re.compile(
+    r"""
     (?P<year>[0-9]{4})
     (-{0,1}(?P<month>[0-9]{1,2})){1}
     (-{0,1}(?P<day>[0-9]{1,2})){1}
@@ -159,7 +161,7 @@ def parse_date(datestring, default_timezone=UTC):
 
     tz = parse_timezone(groups, default_timezone=default_timezone)
 
-    groups["second_fraction"] = int(float("0.%s" % to_int(groups, "second_fraction", default_to_zero=True)) * 1e6)
+    groups["second_fraction"] = int(Decimal("0.%s" % to_int(groups, "second_fraction", default_to_zero=True)) * Decimal("1000000.0"))
 
     try:
         return datetime(

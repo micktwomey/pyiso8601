@@ -46,6 +46,7 @@ def test_parse_invalid_date(invalid_date):
     ("2013-10-15T1831Z", datetime.datetime(2013, 10, 15, 18, 31, 0, 0, iso8601.UTC)),  # hhmm
     ("2013-10-15T18Z", datetime.datetime(2013, 10, 15, 18, 0, 0, 0, iso8601.UTC)),  # hh
     ("20131015T18:30Z", datetime.datetime(2013, 10, 15, 18, 30, 0, 0, iso8601.UTC)),  # YYYYMMDD
+    ("2012-12-19T23:21:28.512400+00:00", datetime.datetime(2012, 12, 19, 23, 21, 28, 512400, iso8601.FixedOffset(0, 0, "+00:00"))),  # https://code.google.com/p/pyiso8601/issues/detail?id=21
 ])
 def test_parse_valid_date(valid_date, expected_datetime):
     parsed = iso8601.parse_date(valid_date)
