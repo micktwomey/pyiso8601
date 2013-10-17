@@ -18,6 +18,7 @@ setup(
     packages=["iso8601"],
     license="MIT",
     classifiers=[
+        "License :: OSI Approved :: MIT License",
         "Programming Language :: Python :: 2",
         "Programming Language :: Python :: 3",
     ],
