@@ -14,19 +14,60 @@ If you want more full featured parsing look at:
 
 - http://labix.org/python-dateutil - python-dateutil
 
+Parsed Formats
+==============
+
+You can parse full date + times, or just the date. In both cases a datetime instance is returned but with missing times defaulting to 0, and missing days / months defaulting to 1.
+
+Dates
+-----
+
+- YYYY-MM-DD
+- YYYYMMDD
+- YYYY-MM (defaults to 1 for the day)
+
+Times
+-----
+
+- hh:mm:ss.nn
+- hhmmss.nn
+- hh:mm (defaults to 0 for seconds)
+- hhmm (defaults to 0 for seconds)
+- hh (defaults to 0 for minutes and seconds)
+
+Time Zones
+----------
+
+- Nothing uses the default timezone given (UTC).
+- Z (UTC)
+- ±hh:mm
+- ±hhmm
+- ±hh
+
+Where it Differs From ISO 8601
+==============================
+
+Known differences from the ISO 8601 spec:
+
+- You can use a " " (space) instead of T for separating date from time.
+- Days and months without a leading 0 (2 vs 02) will be parsed.
+- If time zone information is omitted the default time zone given is used (which in turn defaults to UTC). Use a default of None to yield naive datetime instances.
+
 Homepage
 ========
 
-* https://bitbucket.org/micktwomey/pyiso8601/
+- https://bitbucket.org/micktwomey/pyiso8601/
 
 This was originally hosted at https://code.google.com/p/pyiso8601/
 
 References
 ==========
 
-* http://www.cl.cam.ac.uk/~mgk25/iso-time.html - simple overview
+- http://en.wikipedia.org/wiki/ISO_8601
 
-* http://hydracen.com/dx/iso8601.htm - more detailed enumeration of valid formats.
+- http://www.cl.cam.ac.uk/~mgk25/iso-time.html - simple overview
+
+- http://hydracen.com/dx/iso8601.htm - more detailed enumeration of valid formats.
 
 Testing
 =======
@@ -34,7 +75,7 @@ Testing
 1. pip install -r dev-requirements.txt
 2. tox
 
-Note that you need all the pythons installed to perform a tox run (see below). Homebrew helps a lot on the mac.
+Note that you need all the pythons installed to perform a tox run (see below). Homebrew helps a lot on the mac, however you wind up having to add cellars to your PATH or symlinking the pythonX.Y executables.
 
 Alternatively, to test only with your current python:
 
@@ -52,11 +93,11 @@ Tested against:
 - Python 3.3
 - PyPy
 
-Python 3.0 and 3.1 are untested but should work.
+Python 3.0 and 3.1 are untested but should work (tests didn't run under them when last tried).
 
-Jython is untested but should work.
+Jython is untested but should work (tests failed to run).
 
-Python 2.5 is not supported (too old).
+Python 2.5 is not supported (too old for the tests for the most part). It could work with some small changes but I'm not supporting it.
 
 Changes
 =======
