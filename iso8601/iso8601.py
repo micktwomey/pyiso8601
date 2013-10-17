@@ -173,7 +173,7 @@ def parse_date(datestring, default_timezone=UTC):
             year=to_int(groups, "year"),
             month=to_int(groups, "month"),
             day=to_int(groups, "day"),
-            hour=to_int(groups, "hour"),
+            hour=to_int(groups, "hour", default_to_zero=True),
             minute=to_int(groups, "minute", default_to_zero=True),
             second=to_int(groups, "second", default_to_zero=True),
             microsecond=groups["second_fraction"],

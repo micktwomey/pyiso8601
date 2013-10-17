@@ -75,6 +75,7 @@ Changes
 * Fix pickling and deepcopy of returned datetime objects (https://bitbucket.org/micktwomey/pyiso8601/issue/3/dates-returned-by-parse_date-do-not) (thanks to fogathmann and john@openlearning.com)
 * Fix timezone offsets without a separator (https://bitbucket.org/micktwomey/pyiso8601/issue/4/support-offsets-without-a-separator) (thanks to joe.walton.gglcd)
 * "Z" produces default timezone if one is specified (https://bitbucket.org/micktwomey/pyiso8601/issue/5/z-produces-default-timezone-if-one-is) (thanks to vfaronov). This one may cause problems if you've been relying on default_timezone to use that timezone instead of UTC. Strictly speaking that was wrong but this is potentially backwards incompatible.
+* Handle compact date format (https://bitbucket.org/micktwomey/pyiso8601/issue/6/handle-compact-date-format) (thanks to rvandolson@esri.com)
 
 0.1.4
 -----
