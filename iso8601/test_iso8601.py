@@ -34,6 +34,8 @@ def test_parse_utc_different_default():
     ("23",),
     ("131015T142533Z",),
     ("131015",),
+    ("2007-06-23X06:40:34.00Z", ),  # https://code.google.com/p/pyiso8601/issues/detail?id=14
+    ("2007-06-23 06:40:34.00Zrubbish", ),  # https://code.google.com/p/pyiso8601/issues/detail?id=14
 ])
 def test_parse_invalid_date(invalid_date):
     with pytest.raises(iso8601.ParseError) as exc:
@@ -51,6 +53,7 @@ def test_parse_invalid_date(invalid_date):
     ("2013-10-15T18:30Z", datetime.datetime(2013, 10, 15, 18, 30, 0, 0, iso8601.UTC)),
     ("2013-10-15T22:30+04", datetime.datetime(2013, 10, 15, 22, 30, 0, 0, iso8601.FixedOffset(4, 0, "+04:00"))),  # <time>±hh:mm
     ("2013-10-15T1130-0700", datetime.datetime(2013, 10, 15, 11, 30, 0, 0, iso8601.FixedOffset(-7, 0, "-07:00"))),  # <time>±hhmm
+    ("2013-10-15T1130+0700", datetime.datetime(2013, 10, 15, 11, 30, 0, 0, iso8601.FixedOffset(+7, 0, "+07:00"))),  # <time>±hhmm
     ("2013-10-15T15:00-03:30", datetime.datetime(2013, 10, 15, 15, 0, 0, 0, iso8601.FixedOffset(-3, 30, "-03:30"))),  # <time>±hh
     ("2013-10-15T183123Z", datetime.datetime(2013, 10, 15, 18, 31, 23, 0, iso8601.UTC)),  # hhmmss
     ("2013-10-15T1831Z", datetime.datetime(2013, 10, 15, 18, 31, 0, 0, iso8601.UTC)),  # hhmm
