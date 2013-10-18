@@ -67,6 +67,7 @@ def test_parse_invalid_date(invalid_date):
     ("2010-07-20 15:25:52.520701+00:00", datetime.datetime(2010, 7, 20, 15, 25, 52, 520701, iso8601.FixedOffset(0, 0, "+00:00")), None),  # https://code.google.com/p/pyiso8601/issues/detail?id=17
     ("2010-06-12", datetime.datetime(2010, 6, 12, tzinfo=iso8601.UTC), None),  # https://code.google.com/p/pyiso8601/issues/detail?id=16
     ("1985-04-12T23:20:50.52-05:30", datetime.datetime(1985, 4, 12, 23, 20, 50, 520000, iso8601.FixedOffset(-5, -30, "-05:30")), "1985-04-12T23:20:50.520000-05:30"),  # https://bitbucket.org/micktwomey/pyiso8601/issue/8/015-parses-negative-timezones-incorrectly
+    ("1997-08-29T06:14:00.000123Z", datetime.datetime(1997, 8, 29, 6, 14, 0, 123, iso8601.UTC), None), # https://bitbucket.org/micktwomey/pyiso8601/issue/9/regression-parsing-microseconds
 ])
 def test_parse_valid_date(valid_date, expected_datetime, isoformat):
     parsed = iso8601.parse_date(valid_date)
