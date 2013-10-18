@@ -146,6 +146,7 @@ def parse_timezone(matches, default_timezone=UTC):
     description = "%s%02d:%02d" % (sign, hours, minutes)
     if sign == "-":
         hours = -hours
+        minutes = -minutes
     return FixedOffset(hours, minutes, description)
 
 def parse_date(datestring, default_timezone=UTC):

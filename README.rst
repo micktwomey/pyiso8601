@@ -102,6 +102,11 @@ Python 2.5 is not supported (too old for the tests for the most part). It could 
 Changes
 =======
 
+0.1.6
+-----
+
+* Correct negative timezone offsets (https://bitbucket.org/micktwomey/pyiso8601/issue/8/015-parses-negative-timezones-incorrectly) (thanks to Jonathan Lange)
+
 0.1.5
 -----
 
