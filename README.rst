@@ -102,6 +102,11 @@ Python 2.5 is not supported (too old for the tests for the most part). It could 
 Changes
 =======
 
+0.1.7
+-----
+
+* Fix parsing of microseconds (https://bitbucket.org/micktwomey/pyiso8601/issue/9/regression-parsing-microseconds) (Thanks to dims and bnemec)
+
 0.1.6
 -----
 
