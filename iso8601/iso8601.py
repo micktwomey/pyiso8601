@@ -167,7 +167,7 @@ def parse_date(datestring, default_timezone=UTC):
 
     tz = parse_timezone(groups, default_timezone=default_timezone)
 
-    groups["second_fraction"] = int(Decimal("0.%s" % to_int(groups, "second_fraction", default_to_zero=True)) * Decimal("1000000.0"))
+    groups["second_fraction"] = int(Decimal("0.%s" % (groups["second_fraction"] or 0)) * Decimal("1000000.0"))
 
     try:
         return datetime(
