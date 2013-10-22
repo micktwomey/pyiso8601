@@ -40,9 +40,9 @@ Time Zones
 
 - Nothing uses the default timezone given (UTC).
 - Z (UTC)
-- ±hh:mm
-- ±hhmm
-- ±hh
+- +/-hh:mm
+- +/-hhmm
+- +/-hh
 
 Where it Differs From ISO 8601
 ==============================
@@ -101,6 +101,11 @@ Python 2.5 is not supported (too old for the tests for the most part). It could 
 
 Changes
 =======
+
+0.1.8
+-----
+
+* Remove +/- chars from README.rst and ensure tox tests run using LC_ALL=C. The setup.py egg_info command was failing in python 3.* on some setups (basically any where the system encoding wasn't UTF-8). (https://bitbucket.org/micktwomey/pyiso8601/issue/10/setuppy-broken-for-python-33) (thanks to klmitch)
 
 0.1.7
 -----
