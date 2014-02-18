@@ -35,24 +35,28 @@ ISO8601_REGEX = re.compile(
     (-{0,1}(?P<month>[0-9]{1,2})){1}
     (-{0,1}(?P<day>[0-9]{1,2})){1}
     (
-        (?P<separator>[ T])
-        (?P<hour>[0-9]{2})
-        (:{0,1}(?P<minute>[0-9]{2})){0,1}
         (
-            :{0,1}(?P<second>[0-9]{1,2})
-            (\.(?P<second_fraction>[0-9]+)){0,1}
-        ){0,1}
-        (?P<timezone>
-            Z
-            |
+            (?P<separator>[ T])
+            (?P<hour>[0-9]{2})
+            (:{0,1}(?P<minute>[0-9]{2})){0,1}
             (
-                (?P<tz_sign>[-+])
-                (?P<tz_hour>[0-9]{2})
-                :{0,1}
-                (?P<tz_minute>[0-9]{2}){0,1}
-            )
-        ){0,1}
-    ){0,1}
+                :{0,1}(?P<second>[0-9]{1,2})
+                (\.(?P<second_fraction>[0-9]+)){0,1}
+            ){0,1}
+            (?P<timezone>
+                Z
+                |
+                (
+                    (?P<tz_sign>[-+])
+                    (?P<tz_hour>[0-9]{2})
+                    :{0,1}
+                    (?P<tz_minute>[0-9]{2}){0,1}
+                )
+            ){0,1}
+        )
+        |
+        $
+    )
     """,
     re.VERBOSE
 )

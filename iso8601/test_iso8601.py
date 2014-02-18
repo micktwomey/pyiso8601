@@ -27,15 +27,16 @@ def test_parse_utc_different_default():
     assert d == datetime.datetime(2007, 1, 1, 8, 0, 0, 0, iso8601.UTC)
 
 @pytest.mark.parametrize("invalid_date, error_string", [
-    ("2013-10-", "day is out of range for month"),
+    ("2013-10-", "Unable to parse date string"),
     ("2013-", "Unable to parse date string"),
     ("", "Unable to parse date string"),
     (None, "Expecting a string"),
     ("23", "Unable to parse date string"),
     # ("131015T142533Z", "Unable to parse date string"), FIXME
     # ("131015", "Unable to parse date string"), FIXME
-    # ("2007-06-23X06:40:34.00Z", "Unable to parse date string"),  # https://code.google.com/p/pyiso8601/issues/detail?id=14 FIXME
+    ("2007-06-23X06:40:34.00Z", "Unable to parse date string"),  # https://code.google.com/p/pyiso8601/issues/detail?id=14
     # ("2007-06-23 06:40:34.00Zrubbish", "Unable to parse date string"),  # https://code.google.com/p/pyiso8601/issues/detail?id=14 FIXME
+    ("20114-01-03T01:45:49", "Unable to parse date string"),
 ])
 def test_parse_invalid_date(invalid_date, error_string):
     with pytest.raises(iso8601.ParseError) as exc:
