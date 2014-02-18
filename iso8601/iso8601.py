@@ -32,8 +32,8 @@ else:
 ISO8601_REGEX = re.compile(
     r"""
     (?P<year>[0-9]{4})
-    (-{0,1}(?P<month>[0-9]{1,2})){1}
-    (-{0,1}(?P<day>[0-9]{1,2})){1}
+    ((-(?P<monthdash>[0-9]{1,2}))|(?P<month>[0-9]{2}))
+    ((-(?P<daydash>[0-9]{1,2}))|(?P<day>[0-9]{2}))
     (
         (
             (?P<separator>[ T])
@@ -117,20 +117,22 @@ class FixedOffset(tzinfo):
     def __repr__(self):
         return "<FixedOffset %r %r>" % (self.__name, self.__offset)
 
-def to_int(d, key, default_to_zero=False, default=None):
+def to_int(d, key, default_to_zero=False, default=None, required=True):
     """Pull a value from the dict and convert to int
 
     :param default_to_zero: If the value is None or empty, treat it as zero
     :param default: If the value is missing in the dict use this default
 
     """
-    value = d.get(key, default)
+    value = d.get(key) or default
     LOG.debug("Got %r for %r with default %r", value, key, default)
     if (value in ["", None]) and default_to_zero:
         return 0
     if value is None:
-        raise ParseError("Unable to read %s from %s" % (key, d))
-    return int(value)
+        if required:
+            raise ParseError("Unable to read %s from %s" % (key, d))
+    else:
+        return int(value)
 
 def parse_timezone(matches, default_timezone=UTC):
     """Parses ISO 8601 time zone specs into tzinfo offsets
@@ -176,8 +178,8 @@ def parse_date(datestring, default_timezone=UTC):
     try:
         return datetime(
             year=to_int(groups, "year"),
-            month=to_int(groups, "month"),
-            day=to_int(groups, "day"),
+            month=to_int(groups, "month", default=to_int(groups, "monthdash", required=False)),
+            day=to_int(groups, "day", default=to_int(groups, "daydash", required=False)),
             hour=to_int(groups, "hour", default_to_zero=True),
             minute=to_int(groups, "minute", default_to_zero=True),
             second=to_int(groups, "second", default_to_zero=True),

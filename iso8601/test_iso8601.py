@@ -32,8 +32,8 @@ def test_parse_utc_different_default():
     ("", "Unable to parse date string"),
     (None, "Expecting a string"),
     ("23", "Unable to parse date string"),
-    # ("131015T142533Z", "Unable to parse date string"), FIXME
-    # ("131015", "Unable to parse date string"), FIXME
+    ("131015T142533Z", "Unable to parse date string"),
+    ("131015", "Unable to parse date string"),
     ("2007-06-23X06:40:34.00Z", "Unable to parse date string"),  # https://code.google.com/p/pyiso8601/issues/detail?id=14
     # ("2007-06-23 06:40:34.00Zrubbish", "Unable to parse date string"),  # https://code.google.com/p/pyiso8601/issues/detail?id=14 FIXME
     ("20114-01-03T01:45:49", "Unable to parse date string"),
