@@ -35,7 +35,7 @@ def test_parse_utc_different_default():
     ("131015T142533Z", "Unable to parse date string"),
     ("131015", "Unable to parse date string"),
     ("2007-06-23X06:40:34.00Z", "Unable to parse date string"),  # https://code.google.com/p/pyiso8601/issues/detail?id=14
-    # ("2007-06-23 06:40:34.00Zrubbish", "Unable to parse date string"),  # https://code.google.com/p/pyiso8601/issues/detail?id=14 FIXME
+    ("2007-06-23 06:40:34.00Zrubbish", "Unable to parse date string"),  # https://code.google.com/p/pyiso8601/issues/detail?id=14
     ("20114-01-03T01:45:49", "Unable to parse date string"),
 ])
 def test_parse_invalid_date(invalid_date, error_string):
@@ -50,7 +50,7 @@ def test_parse_invalid_date(invalid_date, error_string):
     ("2007-01-01T08:00:00", datetime.datetime(2007, 1, 1, 8, 0, 0, 0, iso8601.UTC), "2007-01-01T08:00:00+00:00"),  # Handle timezone-less dates. Assumes UTC. http://code.google.com/p/pyiso8601/issues/detail?id=4
     ("2006-10-20T15:34:56.123+02:30", datetime.datetime(2006, 10, 20, 15, 34, 56, 123000, iso8601.FixedOffset(2, 30, "+02:30")), None),
     ("2006-10-20T15:34:56Z", datetime.datetime(2006, 10, 20, 15, 34, 56, 0, iso8601.UTC), "2006-10-20T15:34:56+00:00"),
-    ("2007-5-7T11:43:55.328Z'", datetime.datetime(2007, 5, 7, 11, 43, 55, 328000, iso8601.UTC), "2007-05-07T11:43:55.328000+00:00"),  # http://code.google.com/p/pyiso8601/issues/detail?id=6
+    ("2007-5-7T11:43:55.328Z", datetime.datetime(2007, 5, 7, 11, 43, 55, 328000, iso8601.UTC), "2007-05-07T11:43:55.328000+00:00"),  # http://code.google.com/p/pyiso8601/issues/detail?id=6
     ("2006-10-20T15:34:56.123Z", datetime.datetime(2006, 10, 20, 15, 34, 56, 123000, iso8601.UTC), "2006-10-20T15:34:56.123000+00:00"),
     ("2013-10-15T18:30Z", datetime.datetime(2013, 10, 15, 18, 30, 0, 0, iso8601.UTC), "2013-10-15T18:30:00+00:00"),
     ("2013-10-15T22:30+04", datetime.datetime(2013, 10, 15, 22, 30, 0, 0, iso8601.FixedOffset(4, 0, "+04:00")), "2013-10-15T22:30:00+04:00"),  # <time>±hh:mm

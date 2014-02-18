@@ -53,10 +53,9 @@ ISO8601_REGEX = re.compile(
                     (?P<tz_minute>[0-9]{2}){0,1}
                 )
             ){0,1}
-        )
-        |
-        $
+        ){0,1}
     )
+    $
     """,
     re.VERBOSE
 )
