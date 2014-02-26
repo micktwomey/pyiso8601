@@ -102,6 +102,12 @@ Python 2.5 is not supported (too old for the tests for the most part). It could 
 Changes
 =======
 
+0.1.9
+-----
+
+* Lots of fixes tightening up parsing from jdanjou. In particular more invalid cases are treated as errors. Also includes fixes for tests (which is how these invalid cases got in in the first place).
+* Release addresses https://bitbucket.org/micktwomey/pyiso8601/issue/13/new-release-based-on-critical-bug-fix
+
 0.1.8
 -----
 

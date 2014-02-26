@@ -39,6 +39,7 @@ def test_parse_utc_different_default():
     ("20114-01-03T01:45:49", "Unable to parse date string"),
 ])
 def test_parse_invalid_date(invalid_date, error_string):
+    assert isinstance(invalid_date, str) or invalid_date is None  # Why? 'cos I've screwed up the parametrize before :)
     with pytest.raises(iso8601.ParseError) as exc:
         iso8601.parse_date(invalid_date)
     assert exc.errisinstance(iso8601.ParseError)

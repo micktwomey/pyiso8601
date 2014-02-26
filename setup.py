@@ -9,7 +9,7 @@ long_description = open(os.path.join(os.path.dirname(__file__), "README.rst")).r
 
 setup(
     name="iso8601",
-    version="0.1.8",
+    version="0.1.9",
     description=long_description.split("\n")[0],
     long_description=long_description,
     author="Michael Twomey",
