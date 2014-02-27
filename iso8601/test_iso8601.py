@@ -31,9 +31,12 @@ def test_parse_utc_different_default():
     ("2013-", "Unable to parse date string"),
     ("", "Unable to parse date string"),
     (None, "Expecting a string"),
+    ("wibble", "Unable to parse date string"),
     ("23", "Unable to parse date string"),
     ("131015T142533Z", "Unable to parse date string"),
     ("131015", "Unable to parse date string"),
+    ("20141", "Unable to parse date string"),
+    ("201402", "Unable to parse date string"),
     ("2007-06-23X06:40:34.00Z", "Unable to parse date string"),  # https://code.google.com/p/pyiso8601/issues/detail?id=14
     ("2007-06-23 06:40:34.00Zrubbish", "Unable to parse date string"),  # https://code.google.com/p/pyiso8601/issues/detail?id=14
     ("20114-01-03T01:45:49", "Unable to parse date string"),
@@ -72,6 +75,8 @@ def test_parse_invalid_date(invalid_date, error_string):
     ("2010-06-12", datetime.datetime(2010, 6, 12, tzinfo=iso8601.UTC), "2010-06-12T00:00:00+00:00"),  # https://code.google.com/p/pyiso8601/issues/detail?id=16
     ("1985-04-12T23:20:50.52-05:30", datetime.datetime(1985, 4, 12, 23, 20, 50, 520000, iso8601.FixedOffset(-5, -30, "-05:30")), "1985-04-12T23:20:50.520000-05:30"),  # https://bitbucket.org/micktwomey/pyiso8601/issue/8/015-parses-negative-timezones-incorrectly
     ("1997-08-29T06:14:00.000123Z", datetime.datetime(1997, 8, 29, 6, 14, 0, 123, iso8601.UTC), "1997-08-29T06:14:00.000123+00:00"),  # https://bitbucket.org/micktwomey/pyiso8601/issue/9/regression-parsing-microseconds
+    ("2014-02", datetime.datetime(2014, 2, 1, 0, 0, 0, 0, iso8601.UTC), "2014-02-01T00:00:00+00:00"),  # https://bitbucket.org/micktwomey/pyiso8601/issue/14/regression-yyyy-mm-no-longer-parses
+    ("2014", datetime.datetime(2014, 1, 1, 0, 0, 0, 0, iso8601.UTC), "2014-01-01T00:00:00+00:00"),  # YYYY
 ])
 def test_parse_valid_date(valid_date, expected_datetime, isoformat):
     parsed = iso8601.parse_date(valid_date)
