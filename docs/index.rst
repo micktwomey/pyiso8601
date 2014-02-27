@@ -10,7 +10,7 @@ This module parses the most common forms of ISO 8601 date strings (e.g. 2007-01-
 
 >>> import iso8601
 >>> iso8601.parse_date("2007-01-25T12:00:00Z")
-datetime.datetime(2007, 1, 25, 12, 0, tzinfo=<iso8601.iso8601.Utc ...>)
+datetime.datetime(2007, 1, 25, 12, 0, tzinfo=<iso8601.Utc>)
 >>>
 
 This module is released under a MIT license.
@@ -65,4 +65,12 @@ Installation
 To install simply use pip::
 
     pip install iso8601
+
+
+API
+===
+
+.. autofunction:: iso8601.parse_date
+
+.. autoexception:: iso8601.ParseError
 

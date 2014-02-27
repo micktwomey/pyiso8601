@@ -18,7 +18,7 @@ import logging
 import sys
 import re
 
-__all__ = ["parse_date", "ParseError"]
+__all__ = ["parse_date", "ParseError", "UTC"]
 
 LOG = logging.getLogger(__name__)
 
@@ -79,7 +79,7 @@ class ParseError(Exception):
 # Yoinked from python docs
 ZERO = timedelta(0)
 class Utc(tzinfo):
-    """UTC
+    """UTC Timezone
 
     """
     def utcoffset(self, dt):
@@ -90,6 +90,9 @@ class Utc(tzinfo):
 
     def dst(self, dt):
         return ZERO
+
+    def __repr__(self):
+        return "<iso8601.Utc>"
 
 UTC = Utc()
 
@@ -174,6 +177,15 @@ def parse_date(datestring, default_timezone=UTC):
     have dates without a timezone (not strictly correct). In this case the
     default timezone specified in default_timezone is used. This is UTC by
     default.
+
+    :param datestring: The date to parse as a string
+    :param default_timezone: A datetime tzinfo instance to use when no timezone
+                             is specified in the datestring. If this is set to
+                             None then a naive datetime object is returned.
+    :returns: A datetime.datetime instance
+    :raises: ParseError when there is a problem parsing the date or
+             constructing the datetime instance.
+
     """
     if not isinstance(datestring, _basestring):
         raise ParseError("Expecting a string %r" % datestring)
