@@ -32,29 +32,42 @@ else:
 ISO8601_REGEX = re.compile(
     r"""
     (?P<year>[0-9]{4})
-    ((-(?P<monthdash>[0-9]{1,2}))|(?P<month>[0-9]{2}))
-    ((-(?P<daydash>[0-9]{1,2}))|(?P<day>[0-9]{2}))
     (
         (
-            (?P<separator>[ T])
-            (?P<hour>[0-9]{2})
-            (:{0,1}(?P<minute>[0-9]{2})){0,1}
+            (-(?P<monthdash>[0-9]{1,2}))
+            |
+            (?P<month>[0-9]{2})
+            (?!$)  # Don't allow YYYYMM
+        )
+        (
             (
-                :{0,1}(?P<second>[0-9]{1,2})
-                (\.(?P<second_fraction>[0-9]+)){0,1}
-            ){0,1}
-            (?P<timezone>
-                Z
+                (-(?P<daydash>[0-9]{1,2}))
                 |
+                (?P<day>[0-9]{2})
+            )
+            (
                 (
-                    (?P<tz_sign>[-+])
-                    (?P<tz_hour>[0-9]{2})
-                    :{0,1}
-                    (?P<tz_minute>[0-9]{2}){0,1}
-                )
-            ){0,1}
-        ){0,1}
-    )
+                    (?P<separator>[ T])
+                    (?P<hour>[0-9]{2})
+                    (:{0,1}(?P<minute>[0-9]{2})){0,1}
+                    (
+                        :{0,1}(?P<second>[0-9]{1,2})
+                        (\.(?P<second_fraction>[0-9]+)){0,1}
+                    ){0,1}
+                    (?P<timezone>
+                        Z
+                        |
+                        (
+                            (?P<tz_sign>[-+])
+                            (?P<tz_hour>[0-9]{2})
+                            :{0,1}
+                            (?P<tz_minute>[0-9]{2}){0,1}
+                        )
+                    ){0,1}
+                ){0,1}
+            )
+        ){0,1}  # YYYY-MM
+    ){0,1}  # YYYY only
     $
     """,
     re.VERBOSE
@@ -177,8 +190,8 @@ def parse_date(datestring, default_timezone=UTC):
     try:
         return datetime(
             year=to_int(groups, "year"),
-            month=to_int(groups, "month", default=to_int(groups, "monthdash", required=False)),
-            day=to_int(groups, "day", default=to_int(groups, "daydash", required=False)),
+            month=to_int(groups, "month", default=to_int(groups, "monthdash", required=False, default=1)),
+            day=to_int(groups, "day", default=to_int(groups, "daydash", required=False, default=1)),
             hour=to_int(groups, "hour", default_to_zero=True),
             minute=to_int(groups, "minute", default_to_zero=True),
             second=to_int(groups, "second", default_to_zero=True),

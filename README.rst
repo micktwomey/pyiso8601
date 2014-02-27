@@ -25,6 +25,7 @@ Dates
 - YYYY-MM-DD
 - YYYYMMDD
 - YYYY-MM (defaults to 1 for the day)
+- YYYY (defaults to 1 for month and day)
 
 Times
 -----
@@ -101,6 +102,13 @@ Python 2.5 is not supported (too old for the tests for the most part). It could 
 
 Changes
 =======
+
+0.1.10
+------
+
+* Fixes https://bitbucket.org/micktwomey/pyiso8601/issue/14/regression-yyyy-mm-no-longer-parses (thanks to Kevin Gill for reporting)
+* Adds YYYY as a valid date (uses 1 for both month and day)
+* Woo, semantic versioning, .10 at last.
 
 0.1.9
 -----
