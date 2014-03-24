@@ -1,6 +1,8 @@
 pyiso8601: ISO 8601 Parsing for Python
 ======================================
 
+.. image:: https://pypip.in/d/iso8601/badge.png
+
 This module parses the most common forms of ISO 8601 date strings (e.g. 2007-01-14T20:34:22+00:00) into datetime objects.
 
 >>> import iso8601
