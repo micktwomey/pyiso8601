@@ -39,7 +39,7 @@ Times
 Time Zones
 ----------
 
-- Nothing uses the default timezone given (UTC).
+- Nothing, will use the default timezone given (which in turn defaults to UTC).
 - Z (UTC)
 - +/-hh:mm
 - +/-hhmm
@@ -57,7 +57,8 @@ Known differences from the ISO 8601 spec:
 Homepage
 ========
 
-- https://bitbucket.org/micktwomey/pyiso8601/
+- Documentation: http://pyiso8601.readthedocs.org/
+- Source: https://bitbucket.org/micktwomey/pyiso8601/
 
 This was originally hosted at https://code.google.com/p/pyiso8601/
 
@@ -92,6 +93,7 @@ Tested against:
 - Python 2.7
 - Python 3.2
 - Python 3.3
+- Python 3.4
 - PyPy
 
 Python 3.0 and 3.1 are untested but should work (tests didn't run under them when last tried).
@@ -102,6 +104,13 @@ Python 2.5 is not supported (too old for the tests for the most part). It could 
 
 Changes
 =======
+
+0.1.11
+------
+
+* Add Python 3.4 to tox test config.
+* Link to documentation at http://pyiso8601.readthedocs.org/
+
 
 0.1.10
 ------
