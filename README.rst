@@ -109,6 +109,7 @@ Changes
 ------
 
 * Add Python 3.4 to tox test config.
+* Add PyPy 3 to tox test config.
 * Link to documentation at http://pyiso8601.readthedocs.org/
 
 
