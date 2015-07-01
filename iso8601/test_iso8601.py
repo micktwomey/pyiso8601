@@ -77,6 +77,7 @@ def test_parse_invalid_date(invalid_date, error_string):
     ("1997-08-29T06:14:00.000123Z", datetime.datetime(1997, 8, 29, 6, 14, 0, 123, iso8601.UTC), "1997-08-29T06:14:00.000123+00:00"),  # https://bitbucket.org/micktwomey/pyiso8601/issue/9/regression-parsing-microseconds
     ("2014-02", datetime.datetime(2014, 2, 1, 0, 0, 0, 0, iso8601.UTC), "2014-02-01T00:00:00+00:00"),  # https://bitbucket.org/micktwomey/pyiso8601/issue/14/regression-yyyy-mm-no-longer-parses
     ("2014", datetime.datetime(2014, 1, 1, 0, 0, 0, 0, iso8601.UTC), "2014-01-01T00:00:00+00:00"),  # YYYY
+    ("1997-08-29T06:14:00,000123Z", datetime.datetime(1997, 8, 29, 6, 14, 0, 123, iso8601.UTC), "1997-08-29T06:14:00.000123+00:00"),  # Use , as decimal separator
 ])
 def test_parse_valid_date(valid_date, expected_datetime, isoformat):
     parsed = iso8601.parse_date(valid_date)
