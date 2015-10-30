@@ -14,13 +14,10 @@ from datetime import (
     tzinfo
 )
 from decimal import Decimal
-import logging
 import sys
 import re
 
 __all__ = ["parse_date", "ParseError", "UTC"]
-
-LOG = logging.getLogger(__name__)
 
 if sys.version_info >= (3, 0, 0):
     _basestring = str
@@ -140,7 +137,6 @@ def to_int(d, key, default_to_zero=False, default=None, required=True):
 
     """
     value = d.get(key) or default
-    LOG.debug("Got %r for %r with default %r", value, key, default)
     if (value in ["", None]) and default_to_zero:
         return 0
     if value is None:
@@ -193,7 +189,6 @@ def parse_date(datestring, default_timezone=UTC):
     if not m:
         raise ParseError("Unable to parse date string %r" % datestring)
     groups = m.groupdict()
-    LOG.debug("Parsed %s into %s with default timezone %s", datestring, groups, default_timezone)
 
     tz = parse_timezone(groups, default_timezone=default_timezone)
 
