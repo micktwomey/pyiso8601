@@ -94,7 +94,9 @@ Tested against:
 - Python 3.2
 - Python 3.3
 - Python 3.4
+- Python 3.5
 - PyPy
+- PyPy 3
 
 Python 3.0 and 3.1 are untested but should work (tests didn't run under them when last tried).
 
@@ -108,7 +110,9 @@ Changes
 0.1.11
 ------
 
-* Add Python 3.4 to tox test config.
+* Remove logging (thanks to Quentin Pradet in https://bitbucket.org/micktwomey/pyiso8601/pull-requests/6/remove-debug-logging/diff)
+* Add support for , as separator for fractional part (thanks to ecksun in https://bitbucket.org/micktwomey/pyiso8601/pull-requests/5/add-support-for-as-separator-for/diff)
+* Add Python 3.4 and 3.5 to tox test config.
 * Add PyPy 3 to tox test config.
 * Link to documentation at http://pyiso8601.readthedocs.org/
 
