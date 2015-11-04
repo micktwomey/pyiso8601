@@ -107,6 +107,9 @@ Python 2.5 is not supported (too old for the tests for the most part). It could 
 Changes
 =======
 
+0.1.12
+------
+
 0.1.11
 ------
 
