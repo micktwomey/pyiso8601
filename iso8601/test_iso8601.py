@@ -12,6 +12,10 @@ from iso8601 import iso8601
 def test_iso8601_regex():
     assert iso8601.ISO8601_REGEX.match("2006-10-11T00:14:33Z")
 
+def test_fixedoffset_eq():
+    # See https://bitbucket.org/micktwomey/pyiso8601/issues/19
+    datetime.tzinfo() == iso8601.FixedOffset(2, 0, '+2:00')
+
 def test_parse_no_timezone_different_default():
     tz = iso8601.FixedOffset(2, 0, "test offset")
     d = iso8601.parse_date("2007-01-01T08:00:00", default_timezone=tz)

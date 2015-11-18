@@ -115,9 +115,7 @@ else:
                     and
                     (other.__name == self.__name)
                 )
-            if isinstance(other, tzinfo):
-                return other == self
-            return False
+            return NotImplemented
 
         def __getinitargs__(self):
             return (self.__offset_hours, self.__offset_minutes, self.__name)
