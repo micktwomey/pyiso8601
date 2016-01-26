@@ -13,7 +13,8 @@ from decimal import Decimal
 import sys
 import re
 
-__all__ = ["parse_date", "ParseError", "UTC"]
+__all__ = ["parse_date", "ParseError", "UTC",
+           "FixedOffset"]
 
 if sys.version_info >= (3, 0, 0):
     _basestring = str
