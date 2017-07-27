@@ -95,6 +95,7 @@ Tested against:
 - Python 3.3
 - Python 3.4
 - Python 3.5
+- Python 3.6
 - PyPy
 - PyPy 3
 
@@ -109,6 +110,8 @@ Changes
 
 0.1.12
 ------
+
+* Fix class reference for iso8601.Utc in module docstring (thanks to felixschwarz in https://bitbucket.org/micktwomey/pyiso8601/pull-requests/7/fix-class-reference-for-iso8601utc-in/diff)
 
 0.1.11
 ------
