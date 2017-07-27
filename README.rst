@@ -77,7 +77,7 @@ Testing
 1. pip install -r dev-requirements.txt
 2. tox
 
-Note that you need all the pythons installed to perform a tox run (see below). Homebrew helps a lot on the mac, however you wind up having to add cellars to your PATH or symlinking the pythonX.Y executables.
+Note that you need all the pythons installed to perform a tox run (see below). pyenv helps hugely, use pyenv install for the versions you need then use 'pyenv local version ...' to link them in (the tox-pyenv plugin will pick them up).
 
 Alternatively, to test only with your current python:
 
@@ -91,7 +91,6 @@ Tested against:
 
 - Python 2.6
 - Python 2.7
-- Python 3.2
 - Python 3.3
 - Python 3.4
 - Python 3.5
@@ -99,7 +98,7 @@ Tested against:
 - PyPy
 - PyPy 3
 
-Python 3.0 and 3.1 are untested but should work (tests didn't run under them when last tried).
+Python 3.0, 3.1 and 3.2 are untested but should work (tests didn't run under them when last tried).
 
 Jython is untested but should work (tests failed to run).
 
@@ -107,6 +106,11 @@ Python 2.5 is not supported (too old for the tests for the most part). It could 
 
 Changes
 =======
+
+Unreleased
+----------
+
+* Remove python 3.2 from tests
 
 0.1.12
 ------
