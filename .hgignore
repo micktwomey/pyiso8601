@@ -7,3 +7,4 @@ pyiso8601-venv
 .tox
 _build
 .cache
+.python-version
