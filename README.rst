@@ -58,9 +58,7 @@ Homepage
 ========
 
 - Documentation: http://pyiso8601.readthedocs.org/
-- Source: https://bitbucket.org/micktwomey/pyiso8601/
-
-This was originally hosted at https://code.google.com/p/pyiso8601/
+- Source: https://github.com/micktwomey/pyiso8601
 
 References
 ==========
