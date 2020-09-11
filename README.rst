@@ -89,12 +89,11 @@ Supported Python Versions
 
 Tested against:
 
-- Python 2.6
 - Python 2.7
-- Python 3.3
-- Python 3.4
 - Python 3.5
 - Python 3.6
+- Python 3.7
+- Python 3.8
 - PyPy
 - PyPy 3
 
@@ -110,7 +109,12 @@ Changes
 Unreleased
 ----------
 
-* Remove python 3.2 from tests
+0.1.13
+------
+
+* Move to GitHub (https://github.com/micktwomey/pyiso8601). Thanks go to Martin Häcker for pointing out the bitbucket project had been deleted by Atlassian!
+* Remove python 2.6, 3.2, 3.3 and 3.4 from tests
+* Add python 3.7 and 3.8 to tests
 
 0.1.12
 ------
