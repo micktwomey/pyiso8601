@@ -16,6 +16,10 @@ setup(
     author="Michael Twomey",
     author_email="pyiso8601@mick.twomeylee.name",
     url="https://github.com/micktwomey/pyiso8601",
+    project_urls={
+        'Documentation': "https://pyiso8601.readthedocs.org/",
+        'Issue Tracker': 'https://github.com/micktwomey/pyiso8601/issues',
+    },
     packages=["iso8601"],
     license="MIT",
     classifiers=[
