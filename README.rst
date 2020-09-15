@@ -12,7 +12,7 @@ See the LICENSE file for the license this package is released under.
 
 If you want more full featured parsing look at:
 
-- http://labix.org/python-dateutil - python-dateutil
+- https://labix.org/python-dateutil - python-dateutil
 
 Parsed Formats
 ==============
@@ -57,17 +57,17 @@ Known differences from the ISO 8601 spec:
 Homepage
 ========
 
-- Documentation: http://pyiso8601.readthedocs.org/
+- Documentation: https://pyiso8601.readthedocs.org/
 - Source: https://github.com/micktwomey/pyiso8601
 
 References
 ==========
 
-- http://en.wikipedia.org/wiki/ISO_8601
+- https://en.wikipedia.org/wiki/ISO_8601
 
-- http://www.cl.cam.ac.uk/~mgk25/iso-time.html - simple overview
+- https://www.cl.cam.ac.uk/~mgk25/iso-time.html - simple overview
 
-- http://hydracen.com/dx/iso8601.htm - more detailed enumeration of valid formats.
+- https://web.archive.org/web/20090309040208/http://hydracen.com/dx/iso8601.htm - more detailed enumeration of valid formats.
 
 Testing
 =======
@@ -126,7 +126,7 @@ Unreleased
 * Add support for , as separator for fractional part (thanks to ecksun in https://bitbucket.org/micktwomey/pyiso8601/pull-requests/5/add-support-for-as-separator-for/diff)
 * Add Python 3.4 and 3.5 to tox test config.
 * Add PyPy 3 to tox test config.
-* Link to documentation at http://pyiso8601.readthedocs.org/
+* Link to documentation at https://pyiso8601.readthedocs.org/
 
 
 0.1.10
