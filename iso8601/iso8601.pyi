@@ -27,7 +27,9 @@ else:
     UTC: Utc = ...
 
     class FixedOffset(datetime.tzinfo):
-        def __init__(self, offset_hours: float, offset_minutes: float, name: str):
+        def __init__(
+            self, offset_hours: float, offset_minutes: float, name: str
+        ) -> None:
             ...
 
 
