@@ -64,4 +64,6 @@ jobs:
     - name: Install dependencies
       run: pip install -r dev-requirements.txt
     - name: Lint with mypy
-      run: mypy -p iso8601
+      run: mypy --ignore-missing-imports -p iso8601
+    - name: Lint with mypy for Python 2
+      run: mypy --ignore-missing-imports -2 -p iso8601
