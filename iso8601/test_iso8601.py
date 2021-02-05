@@ -4,11 +4,13 @@ from __future__ import absolute_import
 import copy
 import datetime
 import pickle
-import typing
 
+import hypothesis
+import hypothesis.strategies
+import hypothesis.extra.pytz
 import pytest
 
-from iso8601 import iso8601
+from . import iso8601
 
 
 def test_iso8601_regex() -> None:
@@ -257,3 +259,21 @@ def test_parse_valid_date(
     if isoformat:
         assert parsed.isoformat() == isoformat
     assert iso8601.parse_date(parsed.isoformat()) == parsed  # Test round trip
+
+
+@hypothesis.given(s=hypothesis.strategies.datetimes())
+def test_hypothesis_valid_naive_datetimes(s: datetime.datetime) -> None:
+    as_string = s.isoformat()
+    parsed = iso8601.parse_date(as_string, default_timezone=None)
+    print(f"{s!r} {as_string!r} {parsed!r}")
+    assert s == parsed
+
+
+@hypothesis.given(
+    s=hypothesis.strategies.datetimes(timezones=hypothesis.extra.pytz.timezones())
+)
+def test_hypothesis_valid_datetimes_with_timezone(s: datetime.datetime) -> None:
+    as_string = s.isoformat()
+    parsed = iso8601.parse_date(as_string)
+    print(f"{s!r} {as_string!r} {parsed!r}")
+    assert s == parsed
