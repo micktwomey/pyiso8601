@@ -45,4 +45,4 @@ jobs:
     - name: Install dependencies
       run: poetry install
     - name: Lint with mypy
-      run: mypy --strict iso8601
+      run: poetry run mypy --strict iso8601
