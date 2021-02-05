@@ -39,6 +39,6 @@ jobs:
     - name: Update pip
       run: python -m pip install --upgrade pip
     - name: Install mypy
-      run: python -m pip install --upgrade 'mypy>=0.800'
+      run: python -m pip install --upgrade 'mypy>=0.800' 'pytest>=6.2.2'
     - name: Lint with mypy
       run: mypy --strict iso8601
