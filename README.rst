@@ -104,6 +104,15 @@ Python 2.5 is not supported (too old for the tests for the most part). It could 
 Changes
 =======
 
+Unreleased 1.0.0
+----------------
+
+* Drop python 2 and 3.5 support
+* Add type annotations to code
+* Remove external type annotations in pyi
+* Switch to poetry for packaging
+* Simplify internals and remove old compatability code
+
 0.1.14
 ------
 
