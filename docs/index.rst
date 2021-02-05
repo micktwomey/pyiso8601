@@ -8,11 +8,14 @@ This module parses the most common forms of ISO 8601 date strings (e.g. 2007-01-
 datetime.datetime(2007, 1, 25, 12, 0, tzinfo=<iso8601.Utc>)
 >>>
 
-This module is released under a MIT license.
+See the LICENSE file for the license this package is released under.
 
 If you want more full featured parsing look at:
 
-- http://labix.org/python-dateutil - python-dateutil
+- https://arrow.readthedocs.io - arrow
+- https://pendulum.eustace.io - pendulum
+- https://labix.org/python-dateutil - python-dateutil
+- https://docs.python.org/3/library/datetime.html#datetime.datetime.fromisoformat - Yes, Python 3 has built in parsing too!
 
 Parsed Formats
 ==============
@@ -39,7 +42,7 @@ Times
 Time Zones
 ----------
 
-- Nothing uses the default timezone given (UTC).
+- Nothing, will use the default timezone given (which in turn defaults to UTC).
 - Z (UTC)
 - +/-hh:mm
 - +/-hhmm
@@ -72,7 +75,7 @@ API
 Authors
 =======
 
-Currently active committers:
+Currently active or previously active committers:
 
 - Michael Twomey
 - Julien Danjou

@@ -1,7 +1,6 @@
 Simple module to parse ISO 8601 dates
 
-This module parses the most common forms of ISO 8601 date strings (e.g.
-2007-01-14T20:34:22+00:00) into datetime objects.
+This module parses the most common forms of ISO 8601 date strings (e.g. 2007-01-14T20:34:22+00:00) into datetime objects.
 
 >>> import iso8601
 >>> iso8601.parse_date("2007-01-25T12:00:00Z")
@@ -12,7 +11,10 @@ See the LICENSE file for the license this package is released under.
 
 If you want more full featured parsing look at:
 
+- https://arrow.readthedocs.io - arrow
+- https://pendulum.eustace.io - pendulum
 - https://labix.org/python-dateutil - python-dateutil
+- https://docs.python.org/3/library/datetime.html#datetime.datetime.fromisoformat - Yes, Python 3 has built in parsing too!
 
 Parsed Formats
 ==============
@@ -72,37 +74,43 @@ References
 Testing
 =======
 
-1. pip install -r dev-requirements.txt
-2. tox
+1. poetry install
+2. poetry run nox
 
 Note that you need all the pythons installed to perform a tox run (see below). pyenv helps hugely, use pyenv install for the versions you need then use 'pyenv local version ...' to link them in (the tox-pyenv plugin will pick them up).
 
 Alternatively, to test only with your current python:
 
-1. pip install -r dev-requirements.txt
-2. py.test --verbose iso8601
+1. poetry install
+2. pytest
 
 Supported Python Versions
 =========================
 
 Tested against:
 
-- Python 2.7
-- Python 3.5
 - Python 3.6
 - Python 3.7
 - Python 3.8
-- PyPy
+- Python 3.9
+- Python 3.10 (pre-release)
 - PyPy 3
 
-Python 3.0, 3.1 and 3.2 are untested but should work (tests didn't run under them when last tried).
-
-Jython is untested but should work (tests failed to run).
-
-Python 2.5 is not supported (too old for the tests for the most part). It could work with some small changes but I'm not supporting it.
+Python 3 versions < 3.6 are untested but should work.
 
 Changes
 =======
+
+Unreleased 1.0.0
+----------------
+
+* Drop python < 3.6 support
+* Add type annotations to code
+* Remove external type annotations in pyi
+* Switch to poetry for packaging
+* Simplify internals and remove old compatability code
+* Switch to nox for testing
+* Lots of small project development changes
 
 0.1.14
 ------
