@@ -111,7 +111,8 @@ Unreleased
 * Add project URLs in setup.py (thanks to Steve Piercy)
 * Update README links (thanks to Steve Piercy)
 * Fix handling of README in setup.py (encoding fun in 3.5, 3.6 and pypy3)
-* FIx README links (thanks to Chris Barker)
+* Fix README links (thanks to Chris Barker)
+* Derive `ParseError` from `ValueError`
 
 0.1.13
 ------

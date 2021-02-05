@@ -36,7 +36,7 @@ else:
 ISO8601_REGEX: Pattern[basestring] = ...
 
 
-class ParseError(Exception):
+class ParseError(ValueError):
 
     ...
 
