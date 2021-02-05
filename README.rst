@@ -104,8 +104,8 @@ Python 2.5 is not supported (too old for the tests for the most part). It could 
 Changes
 =======
 
-Unreleased
-----------
+0.1.14
+------
 
 * Add GitHub build actions for project
 * Add project URLs in setup.py (thanks to Steve Piercy)
