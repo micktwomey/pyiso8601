@@ -112,7 +112,9 @@ Changes
 * Update README links (thanks to Steve Piercy)
 * Fix handling of README in setup.py (encoding fun in 3.5, 3.6 and pypy3)
 * Fix README links (thanks to Chris Barker)
-* Derive `ParseError` from `ValueError`
+* Add Python 3.9 to test matrix (thanks to Luciano Mammino)
+* Add type hints (thanks to Brett Cannon)
+* Derive `ParseError` from `ValueError` (thanks to Lex Robinson)
 
 0.1.13
 ------
