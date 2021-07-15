@@ -1,9 +1,13 @@
 [tool.poetry]
 name = "iso8601"
-version = "1.0.0-alpha.0"
+version = "1.0.0-alpha.1"
 description = "Simple module to parse ISO 8601 dates"
 authors = ["Michael Twomey <mick@twomeylee.name>"]
 license = "MIT"
+readme = "README.rst"
+homepage = "https://github.com/micktwomey/pyiso8601"
+repository = "https://github.com/micktwomey/pyiso8601"
+documentation = "https://pyiso8601.readthedocs.io/en/latest/"
 
 [tool.poetry.dependencies]
 python = ">=3.6.2,<4.0"
