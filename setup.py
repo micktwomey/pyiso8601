@@ -13,7 +13,7 @@ long_description = (
 
 setup(
     name="iso8601",
-    version="0.1.15",
+    version="0.1.16",
     description=long_description.split("\n")[0],
     long_description=long_description,
     long_description_content_type="text/x-rst",

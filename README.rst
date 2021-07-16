@@ -104,6 +104,11 @@ Python 2.5 is not supported (too old for the tests for the most part). It could 
 Changes
 =======
 
+0.1.16
+------
+
+* Include `docs/` into sdist tarball (thanks to kloczek in https://github.com/micktwomey/pyiso8601/issues/14)
+
 0.1.15
 ------
 
