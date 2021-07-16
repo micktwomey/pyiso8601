@@ -104,6 +104,11 @@ Python 2.5 is not supported (too old for the tests for the most part). It could 
 Changes
 =======
 
+0.1.15
+------
+
+* Include .pyi files in built wheels and source tarballs
+
 0.1.14
 ------
 

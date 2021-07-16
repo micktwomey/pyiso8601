@@ -1,2 +1,2 @@
-recursive-include iso8601 *.py
+recursive-include iso8601 *.py *.pyi
 include README.rst LICENSE tox.ini setup.py *requirements.txt

@@ -13,7 +13,7 @@ long_description = (
 
 setup(
     name="iso8601",
-    version="0.1.14",
+    version="0.1.15",
     description=long_description.split("\n")[0],
     long_description=long_description,
     long_description_content_type="text/x-rst",
@@ -25,6 +25,7 @@ setup(
         "Issue Tracker": "https://github.com/micktwomey/pyiso8601/issues",
     },
     packages=["iso8601"],
+    include_package_data=True,
     license="MIT",
     classifiers=[
         "License :: OSI Approved :: MIT License",
