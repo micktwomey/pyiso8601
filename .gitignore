@@ -6,3 +6,4 @@ build
 dist
 .vscode
 .hypothesis
+git_log.txt
