@@ -6,8 +6,8 @@ import datetime
 import pickle
 
 import hypothesis
-import hypothesis.strategies
 import hypothesis.extra.pytz
+import hypothesis.strategies
 import pytest
 
 from . import iso8601
