@@ -74,15 +74,27 @@ References
 Testing
 =======
 
-1. poetry install
-2. poetry run nox
+1. `poetry install`
+2. `poetry run nox`
 
 Note that you need all the pythons installed to perform a tox run (see below). pyenv helps hugely, use pyenv install for the versions you need then use 'pyenv local version ...' to link them in (the tox-pyenv plugin will pick them up).
 
 Alternatively, to test only with your current python:
 
-1. poetry install
-2. pytest
+1. `poetry install`
+2. `pytest`
+
+Releasing
+=========
+
+1. Ensure there is a new version committed to main (use `poetry version <action>` to bump).
+2. Ensure README.rst changelog is up to date.
+3. Note new and previous version.
+4. `rm -rf dist`
+5. `poetry build`
+6. `git log --oneline $LAST_RELEASE..@ > git_log.txt`
+7. `gh release create --notes-file git_log.txt --title $NEXT_VERSION $NEXT_VERSION dist/*`
+8. `poetry publish`
 
 Supported Python Versions
 =========================
@@ -93,7 +105,7 @@ Tested against:
 - Python 3.7
 - Python 3.8
 - Python 3.9
-- Python 3.10 (pre-release)
+- Python 3.10
 - PyPy 3
 
 Python 3 versions < 3.6 are untested but should work.

@@ -1,2 +1,13 @@
 recursive-include iso8601 *.py
-include README.rst LICENSE tox.ini setup.py *requirements.txt
+recursive-include docs *
+include .editorconfig
+include .envrc
+include .gitignore
+include .pre-commit-config.yaml
+include .tool-versions
+include LICENSE
+include noxfile.py
+include poetry.lock
+include pyproject.toml
+include README.rst
+include setup.py
