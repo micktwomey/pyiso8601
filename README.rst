@@ -92,8 +92,8 @@ Releasing
 3. Note new and previous version.
 4. `rm -rf dist`
 5. `poetry build`
-6. `git log --oneline $LAST_RELEASE..@ > git_log.txt`
-7. `gh release create --notes-file git_log.txt --title $NEXT_VERSION $NEXT_VERSION dist/*`
+6. `git log --oneline $LAST_VERSION..@ > git_log.txt`
+7. `gh release create --notes-file git_log.txt --title $(poetry version -s) $(poetry version -s) dist/*`
 8. `poetry publish`
 
 Supported Python Versions
@@ -113,8 +113,8 @@ Python 3 versions < 3.6 are untested but should work.
 Changes
 =======
 
-Unreleased 1.0.0
-----------------
+1.0.0
+-----
 
 * Drop python < 3.6 support
 * Add type annotations to code
@@ -123,6 +123,16 @@ Unreleased 1.0.0
 * Simplify internals and remove old compatability code
 * Switch to nox for testing
 * Lots of small project development changes
+
+0.1.16
+------
+
+* Include `docs/` into sdist tarball (thanks to kloczek in https://github.com/micktwomey/pyiso8601/issues/14)
+
+0.1.15
+------
+
+* Include .pyi files in built wheels and source tarballs
 
 0.1.14
 ------

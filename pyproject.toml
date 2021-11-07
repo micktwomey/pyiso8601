@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "iso8601"
-version = "1.0.0-alpha.2"
+version = "1.0.0"
 description = "Simple module to parse ISO 8601 dates"
 authors = ["Michael Twomey <mick@twomeylee.name>"]
 license = "MIT"
