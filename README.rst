@@ -113,6 +113,11 @@ Python 3 versions < 3.6 are untested but should work.
 Changes
 =======
 
+1.0.1
+-----
+
+* Add missing py.typed file (as per PEP 561), keeps mypy happy :D
+
 1.0.0
 -----
 
