@@ -113,6 +113,11 @@ Python 3 versions < 3.6 are untested but should work.
 Changes
 =======
 
+1.0.2
+-----
+
+* Add missing `__all__` in `__init__.py`. Addresses https://github.com/micktwomey/pyiso8601/issues/17 (thanks to Alex Gaynor for reporting)
+
 1.0.1
 -----
 

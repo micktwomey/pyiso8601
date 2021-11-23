@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "iso8601"
-version = "1.0.1"
+version = "1.0.2"
 description = "Simple module to parse ISO 8601 dates"
 authors = ["Michael Twomey <mick@twomeylee.name>"]
 license = "MIT"
@@ -27,3 +27,6 @@ Sphinx = "^4.2.0"
 [build-system]
 requires = ["poetry-core>=1.0.0"]
 build-backend = "poetry.core.masonry.api"
+
+[tool.isort]
+profile = "black"
