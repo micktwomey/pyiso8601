@@ -18,12 +18,11 @@ def check_example(session: nox.Session):
 
 @nox.session(reuse_venv=True)
 def docs(session: nox.Session):
-    session.install(".", "Sphinx")
+    session.install(".[docs]")
     session.run("sphinx-build", "docs", "docs/_build")
 
 
 @nox.session(python=["3.7", "3.8", "3.9", "3.10", "3.11", "pypy3"], reuse_venv=True)
 def test(session: nox.Session):
-    session.install(".")
-    session.install("pytest", "hypothesis", "pytz")
+    session.install(".[test]")
     session.run("pytest", "-vv", "--tb=short", "--log-level=INFO")
