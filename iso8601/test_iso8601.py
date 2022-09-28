@@ -60,6 +60,7 @@ def test_parse_utc_different_default() -> None:
     ],
 )
 def test_parse_invalid_date(invalid_date: str, error_string: str) -> None:
+    assert iso8601.is_iso8601(invalid_date) is False
     with pytest.raises(iso8601.ParseError) as exc:
         iso8601.parse_date(invalid_date)
     assert exc.errisinstance(iso8601.ParseError)
@@ -243,6 +244,7 @@ def test_parse_invalid_date(invalid_date: str, error_string: str) -> None:
 def test_parse_valid_date(
     valid_date: str, expected_datetime: datetime.datetime, isoformat: str
 ) -> None:
+    assert iso8601.is_iso8601(valid_date) is True
     parsed = iso8601.parse_date(valid_date)
     assert parsed.year == expected_datetime.year
     assert parsed.month == expected_datetime.month
