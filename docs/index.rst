@@ -68,6 +68,8 @@ To install simply use pip::
 API
 ===
 
+.. autofunction:: iso8601.is_iso8601
+
 .. autofunction:: iso8601.parse_date
 
 .. autoexception:: iso8601.ParseError

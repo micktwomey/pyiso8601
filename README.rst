@@ -113,6 +113,10 @@ Python 3 versions < 3.6 are untested but should work.
 Changes
 =======
 
+unreleased
+----------
+* Add `is_iso8601` function for validating that a string matches an ISO 8601 format
+
 1.0.2
 -----
 
