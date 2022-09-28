@@ -158,5 +158,5 @@ def is_iso8601(datestring: str) -> bool:
     try:
         m = ISO8601_REGEX.match(datestring)
         return bool(m)
-    except Exception:
-        return False
+    except Exception as e:
+        raise ParseError(e)
