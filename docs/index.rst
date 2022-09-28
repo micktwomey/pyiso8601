@@ -1,6 +1,12 @@
 pyiso8601: ISO 8601 Parsing for Python
 ======================================
 
+Documentation: https://pyiso8601.readthedocs.org/
+
+PyPI: https://pypi.org/project/iso8601/
+
+Source: https://github.com/micktwomey/pyiso8601
+
 This module parses the most common forms of ISO 8601 date strings (e.g. 2007-01-14T20:34:22+00:00) into datetime objects.
 
 >>> import iso8601
@@ -57,6 +63,15 @@ Known differences from the ISO 8601 spec:
 - Days and months without a leading 0 (2 vs 02) will be parsed.
 - If time zone information is omitted the default time zone given is used (which in turn defaults to UTC). Use a default of None to yield naive datetime instances.
 
+References
+==========
+
+- https://en.wikipedia.org/wiki/ISO_8601
+
+- https://www.cl.cam.ac.uk/~mgk25/iso-time.html - simple overview
+
+- https://web.archive.org/web/20090309040208/http://hydracen.com/dx/iso8601.htm - more detailed enumeration of valid formats.
+
 Installation
 ============
 
@@ -74,10 +89,3 @@ API
 
 .. autoexception:: iso8601.ParseError
 
-Authors
-=======
-
-Currently active or previously active committers:
-
-- Michael Twomey
-- Julien Danjou
