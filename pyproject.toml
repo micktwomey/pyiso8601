@@ -10,7 +10,7 @@ repository = "https://github.com/micktwomey/pyiso8601"
 documentation = "https://pyiso8601.readthedocs.io/en/latest/"
 
 [tool.poetry.dependencies]
-python = ">=3.6.2,<4.0"
+python = ">=3.7,<4.0"
 
 [tool.poetry.dev-dependencies]
 mypy = "*"

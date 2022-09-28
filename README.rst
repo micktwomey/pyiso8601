@@ -101,7 +101,6 @@ Supported Python Versions
 
 Tested against:
 
-- Python 3.6
 - Python 3.7
 - Python 3.8
 - Python 3.9
@@ -109,13 +108,15 @@ Tested against:
 - Python 3.11
 - PyPy 3
 
-Python 3 versions < 3.6 are untested but should work.
+Python 3 versions < 3.7 are untested but should work.
 
 Changes
 =======
 
 unreleased
 ----------
+
+* Drop Python 3.6 support (3.6 is end of life)
 
 1.1.0
 -----
