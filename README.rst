@@ -106,6 +106,7 @@ Tested against:
 - Python 3.8
 - Python 3.9
 - Python 3.10
+- Python 3.11
 - PyPy 3
 
 Python 3 versions < 3.6 are untested but should work.
@@ -115,7 +116,11 @@ Changes
 
 unreleased
 ----------
-* Add `is_iso8601` function for validating that a string matches an ISO 8601 format
+
+1.1.0
+-----
+* Add `is_iso8601` function for validating that a string matches an ISO 8601 format (thanks to David Baumgold (https://github.com/singingwolfboy) for https://github.com/micktwomey/pyiso8601/pull/21)
+* Add Python 3.11 to the test mix
 
 1.0.2
 -----
