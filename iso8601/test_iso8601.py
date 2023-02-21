@@ -19,7 +19,8 @@ def test_iso8601_regex() -> None:
 
 def test_fixedoffset_eq() -> None:
     # See https://bitbucket.org/micktwomey/pyiso8601/issues/19
-    datetime.tzinfo() == iso8601.FixedOffset(2, 0, "+2:00")
+    expected_timezone = datetime.timezone(offset=datetime.timedelta(hours=2))
+    assert expected_timezone == iso8601.FixedOffset(2, 0, "+2:00")
 
 
 def test_parse_no_timezone_different_default() -> None:

@@ -120,6 +120,7 @@ unreleased
 
 * Drop Python 3.6 support (3.6 is end of life)
 * Freshen up README
+* Fix test_fixedoffset_eq by adding an actual assertion
 
 1.1.0
 -----
