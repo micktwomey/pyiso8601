@@ -8,6 +8,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 - Use ruff for linting
 
+### Added
+- testing
+
 ## [2.0.0] - 2023-06-09
 ### Added
 - Add just for development commands
@@ -164,3 +167,27 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [0.1.0] - 2007-01-04
 ### Added
 - First release
+
+[Unreleased]: https://github.com/micktwomey/pyiso8601/compare/2.0.0...HEAD
+[2.0.0]: https://github.com/micktwomey/pyiso8601/releases/tag/2.0.0
+[1.1.0]: https://github.com/micktwomey/pyiso8601/releases/tag/1.1.0
+[1.0.2]: https://github.com/micktwomey/pyiso8601/releases/tag/1.0.2
+[1.0.1]: https://github.com/micktwomey/pyiso8601/releases/tag/1.0.1
+[1.0.0]: https://github.com/micktwomey/pyiso8601/releases/tag/1.0.0
+[0.1.9]: https://github.com/micktwomey/pyiso8601/releases/tag/0.1.9
+[0.1.8]: https://github.com/micktwomey/pyiso8601/releases/tag/0.1.8
+[0.1.7]: https://github.com/micktwomey/pyiso8601/releases/tag/0.1.7
+[0.1.6]: https://github.com/micktwomey/pyiso8601/releases/tag/0.1.6
+[0.1.5]: https://github.com/micktwomey/pyiso8601/releases/tag/0.1.5
+[0.1.4]: https://github.com/micktwomey/pyiso8601/releases/tag/0.1.4
+[0.1.3]: https://github.com/micktwomey/pyiso8601/releases/tag/0.1.3
+[0.1.2]: https://github.com/micktwomey/pyiso8601/releases/tag/0.1.2
+[0.1.16]: https://github.com/micktwomey/pyiso8601/releases/tag/0.1.16
+[0.1.15]: https://github.com/micktwomey/pyiso8601/releases/tag/0.1.15
+[0.1.14]: https://github.com/micktwomey/pyiso8601/releases/tag/0.1.14
+[0.1.13]: https://github.com/micktwomey/pyiso8601/releases/tag/0.1.13
+[0.1.12]: https://github.com/micktwomey/pyiso8601/releases/tag/0.1.12
+[0.1.11]: https://github.com/micktwomey/pyiso8601/releases/tag/0.1.11
+[0.1.10]: https://github.com/micktwomey/pyiso8601/releases/tag/0.1.10
+[0.1.1]: https://github.com/micktwomey/pyiso8601/releases/tag/0.1.1
+[0.1.0]: https://github.com/micktwomey/pyiso8601/releases/tag/0.1.0
