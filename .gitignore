@@ -7,3 +7,10 @@ dist
 .vscode
 .hypothesis
 git_log.txt
+
+# Devenv
+.devenv*
+devenv.local.nix
+
+.direnv
+.venv
