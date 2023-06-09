@@ -3,8 +3,8 @@ import nox
 
 @nox.session(reuse_venv=True)
 def lint(session: nox.Session) -> None:
-    session.install("pytest", "hypothesis", "pytz", "black", "mypy", "isort")
-    session.run("isort", "--check", "--diff", "iso8601")
+    session.install("pytest", "hypothesis", "pytz", "black", "mypy", "ruff")
+    session.run("ruff", "check", "iso8601")
     session.run("black", "--check", "--diff", "iso8601")
     session.run("mypy", "--strict", "iso8601")
 

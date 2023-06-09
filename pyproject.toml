@@ -15,8 +15,6 @@ python = ">=3.7,<4.0"
 [tool.poetry.group.dev.dependencies]
 mypy = "*"
 black = "*"
-pylint = "*"
-isort = "*"
 pytest = "*"
 hypothesis = "*"
 pytz = "*"
@@ -24,6 +22,7 @@ pre-commit = "*"
 nox = "*"
 Sphinx = "*"
 changelog-manager = "*"
+ruff = "*"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]

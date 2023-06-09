@@ -110,4 +110,4 @@ Python 3 versions < 3.7 are untested but should work.
 Changes
 =======
 
-See `CHANGELOG.md <CHANGELOG.md>`_.
+See `CHANGELOG.md <https://github.com/micktwomey/pyiso8601/blob/main/CHANGELOG.md>`_.

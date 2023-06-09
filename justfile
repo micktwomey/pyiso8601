@@ -1,8 +1,33 @@
 project := "iso8601"
 
-# Run tests via pytest
-test:
-    poetry run pytest -v
+# Run linting and test tasks
+default: pre-commit lint test
+
+# Run pre-commit
+pre-commit COMMAND="run" *ARGS="--all-files":
+    poetry run pre-commit {{COMMAND}} {{ARGS}}
+
+# Run all linting actions
+lint: ruff mypy black
+
+# Lint code with ruff
+ruff COMMAND="check" *ARGS=".":
+    poetry run ruff {{COMMAND}} {{ARGS}}
+
+# Check code with Mypy
+mypy *ARGS=".":
+    poetry run mypy {{ARGS}}
+
+# Check files with black
+black *ARGS=".":
+    poetry run black {{ARGS}}
+
+# Run tests
+test: pytest nox
+
+# Run pytest tests
+pytest  *ARGS="-v":
+    poetry run pytest {{ARGS}}
 
 # Run nox tests
 nox *ARGS="-x":
