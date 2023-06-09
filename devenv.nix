@@ -3,6 +3,7 @@
 {
   packages = [
     pkgs.git
+    pkgs.just
     pkgs.python38
     pkgs.python39
     pkgs.python310

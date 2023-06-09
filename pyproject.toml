@@ -12,7 +12,7 @@ documentation = "https://pyiso8601.readthedocs.io/en/latest/"
 [tool.poetry.dependencies]
 python = ">=3.7,<4.0"
 
-[tool.poetry.dev-dependencies]
+[tool.poetry.group.dev.dependencies]
 mypy = "*"
 black = "*"
 pylint = "*"
@@ -23,6 +23,7 @@ pytz = "*"
 pre-commit = "*"
 nox = "*"
 Sphinx = "*"
+changelog-manager = "*"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]

@@ -162,6 +162,22 @@ files = [
 ]
 
 [[package]]
+name = "changelog-manager"
+version = "1.3.0"
+description = "Easily manage your changelog using this CLI"
+category = "dev"
+optional = false
+python-versions = ">=3.7"
+files = [
+    {file = "changelog_manager-1.3.0-py3-none-any.whl", hash = "sha256:d45e53bff0357c474f510a7c3eb032ae67079083479fcbb14fc39f4a2a36460c"},
+    {file = "changelog_manager-1.3.0.tar.gz", hash = "sha256:92a3a94b150e93026782c224572fd3c3d393bc6f5d97d02a7c00092398a6e079"},
+]
+
+[package.dependencies]
+click = "*"
+keepachangelog = "2.0.0.dev2"
+
+[[package]]
 name = "charset-normalizer"
 version = "3.1.0"
 description = "The Real First Universal Charset Detector. Open, modern and actively maintained alternative to Chardet."
@@ -502,6 +518,21 @@ MarkupSafe = ">=2.0"
 
 [package.extras]
 i18n = ["Babel (>=2.7)"]
+
+[[package]]
+name = "keepachangelog"
+version = "2.0.0.dev2"
+description = "Manipulate keep a changelog files."
+category = "dev"
+optional = false
+python-versions = ">=3.6"
+files = [
+    {file = "keepachangelog-2.0.0.dev2-py3-none-any.whl", hash = "sha256:fab31d5746cfefcf30d9ab7ed97be9f1d4dcad4cba0b8e6545b7663de5dad500"},
+    {file = "keepachangelog-2.0.0.dev2.tar.gz", hash = "sha256:72f12f5f0f1b34b969d6a478739c12c53023d090e0b748ae39f0df1c8b4481c2"},
+]
+
+[package.extras]
+testing = ["flask-restx (>=0.5.0,<0.6.0)", "pytest-cov (>=2.0.0,<3.0.0)", "requests (>=2.0.0,<3.0.0)", "starlette (>=0.16.0,<0.17.0)"]
 
 [[package]]
 name = "lazy-object-proxy"
@@ -1323,4 +1354,4 @@ testing = ["big-O", "flake8 (<5)", "jaraco.functools", "jaraco.itertools", "more
 [metadata]
 lock-version = "2.0"
 python-versions = ">=3.7,<4.0"
-content-hash = "9e5e81275d1499ba45fd54603f365d563f9127e9f294e0d50dd72b63c3d35070"
+content-hash = "ed39aa18092a0ca4b1ce41290a7a015cf990ba78690f8c240b1f5da91773af05"
