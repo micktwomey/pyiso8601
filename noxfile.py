@@ -2,7 +2,7 @@ import nox
 
 
 @nox.session(reuse_venv=True)
-def lint(session: nox.Session):
+def lint(session: nox.Session) -> None:
     session.install("pytest", "hypothesis", "pytz", "black", "mypy", "isort")
     session.run("isort", "--check", "--diff", "iso8601")
     session.run("black", "--check", "--diff", "iso8601")
@@ -10,20 +10,22 @@ def lint(session: nox.Session):
 
 
 @nox.session(reuse_venv=True)
-def check_example(session: nox.Session):
+def check_example(session: nox.Session) -> None:
     session.install(".", "mypy")
     session.run("mypy", "--strict", "docs/example.py")
     session.run("python", "docs/example.py")
 
 
 @nox.session(reuse_venv=True)
-def docs(session: nox.Session):
+def docs(session: nox.Session) -> None:
     session.install(".", "Sphinx")
     session.run("sphinx-build", "docs", "docs/_build")
 
 
-@nox.session(python=["3.7", "3.8", "3.9", "3.10", "3.11", "pypy3"], reuse_venv=True)
-def test(session: nox.Session):
+@nox.session(
+    python=["3.7", "3.8", "3.9", "3.10", "3.11", "3.12", "pypy3"], reuse_venv=True
+)
+def test(session: nox.Session) -> None:
     session.install(".")
     session.install("pytest", "hypothesis", "pytz")
     session.run("pytest", "-vv", "--tb=short", "--log-level=INFO")
