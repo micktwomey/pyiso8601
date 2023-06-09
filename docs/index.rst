@@ -88,4 +88,3 @@ API
 .. autofunction:: iso8601.parse_date
 
 .. autoexception:: iso8601.ParseError
-
