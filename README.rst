@@ -108,6 +108,7 @@ Tested against:
 - Python 3.9
 - Python 3.10
 - Python 3.11
+- Python 3.12
 - PyPy 3
 
 Python 3 versions < 3.7 are untested but should work.
@@ -118,6 +119,7 @@ Changes
 unreleased
 ----------
 
+* Add Python 3.12 support
 * Drop Python 3.6 support (3.6 is end of life)
 * Freshen up README
 * Fix test_fixedoffset_eq by adding an actual assertion
