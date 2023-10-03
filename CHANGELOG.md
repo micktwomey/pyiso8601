@@ -9,6 +9,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Use ruff for linting
 - Fixed CHANGELOG version links
 
+### Added
+- Add readthedocs configuration
+
 ## [2.0.0] - 2023-06-09
 ### Added
 - Add just for development commands
