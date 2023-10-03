@@ -7,9 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 ### Fixed
 - Use ruff for linting
+- Fixed CHANGELOG version links
 
 ### Added
-- testing
+- Add readthedocs configuration
 
 ## [2.0.0] - 2023-06-09
 ### Added
