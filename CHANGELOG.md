@@ -7,9 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 ### Fixed
 - Use ruff for linting
-
-### Added
-- testing
+- Fixed CHANGELOG version links
 
 ## [2.0.0] - 2023-06-09
 ### Added
