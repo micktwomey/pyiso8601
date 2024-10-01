@@ -4,10 +4,9 @@ include .editorconfig
 include .envrc
 include .gitignore
 include .pre-commit-config.yaml
-include .tool-versions
 include LICENSE
-include noxfile.py
 include poetry.lock
 include pyproject.toml
 include README.rst
 include setup.py
+include justfile
