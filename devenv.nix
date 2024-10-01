@@ -1,29 +1,23 @@
 { pkgs, ... }:
 
-{
+let
+    python-pkg = pkgs.python312;
+in {
   packages = [
+    pkgs.gh
     pkgs.git
     pkgs.just
-    pkgs.python38
-    pkgs.python39
-    pkgs.python310
-    pkgs.python311
-    pkgs.python312
+    python-pkg
   ];
-
-  enterShell = ''
-    git --version
-    # type -a python
-    python --version
-    poetry install
-  '';
 
   languages.python = {
     enable = true;
-    package = pkgs.python311;
-    poetry.enable = true;
-    poetry.package = pkgs.poetry;
+    package = python-pkg;
     venv.enable = true;
+    poetry.enable = true;
+    poetry.activate.enable = true;
+    poetry.install.enable = true;
+    poetry.install.installRootPackage = true;
   };
 
   # Note: I'm not using devenv's pre-commit support as isn't portable

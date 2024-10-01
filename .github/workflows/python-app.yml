@@ -11,45 +11,47 @@ jobs:
     strategy:
       max-parallel: 8
       matrix:
-        python-version: ["3.7", "3.8", "3.9", "3.10", "3.11", "3.12"]
+        python-version: ["3.8", "3.9", "3.10", "3.11", "3.12", "3.13-dev", "pypy3.10"]
 
     steps:
       - uses: actions/checkout@v3
 
       - name: Set up Python ${{ matrix.python-version }}
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@v5
         with:
           python-version: ${{ matrix.python-version }}
           architecture: x64
           allow-prereleases: true
-      - name: Install nox
-        run: python -m pip install --upgrade nox
-      - name: nox test
-        # Little hack to detect major.minor version, matrix version not always compatible with nox expectation
-        run: nox --python $(python -c 'import sys; print(f"{sys.version_info.major}.{sys.version_info.minor}")') --session test
+      - uses: snok/install-poetry@v1
+      - run: poetry install
+      - uses: extractions/setup-just@v2
+      - name: just test
+        run: just test
 
   lint:
     runs-on: ubuntu-latest
 
     steps:
       - uses: actions/checkout@v3
-      - uses: actions/setup-python@v4
+      - uses: actions/setup-python@v5
         with:
-          python-version: "3.11"
-      - name: Install nox
-        run: python -m pip install --upgrade nox
-      - name: nox lint
-        run: nox --session lint
+          python-version: "3.12"
+      - uses: snok/install-poetry@v1
+      - run: poetry install
+      - uses: extractions/setup-just@v2
+      - name: just lint
+        run: just lint
 
   docs:
     runs-on: ubuntu-latest
 
     steps:
       - uses: actions/checkout@v3
-      - uses: actions/setup-python@v4
+      - uses: actions/setup-python@v5
         with:
-          python-version: "3.11"
-      - name: Install nox
-        run: python -m pip install --upgrade nox
-      - name: nox docs
-        run: nox --session docs
+          python-version: "3.12"
+      - uses: snok/install-poetry@v1
+      - run: poetry install
+      - uses: extractions/setup-just@v2
+      - name: just docs
+        run: just docs

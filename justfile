@@ -1,14 +1,14 @@
 project := "iso8601"
 
 # Run linting and test tasks
-default: pre-commit lint test
+default: pre-commit lint test docs
 
 # Run pre-commit
 pre-commit COMMAND="run" *ARGS="--all-files":
     poetry run pre-commit {{COMMAND}} {{ARGS}}
 
 # Run all linting actions
-lint: ruff mypy black
+lint: ruff mypy
 
 # Lint code with ruff
 ruff COMMAND="check" *ARGS=".":
@@ -18,34 +18,30 @@ ruff COMMAND="check" *ARGS=".":
 mypy *ARGS=".":
     poetry run mypy {{ARGS}}
 
-# Check files with black
-black *ARGS=".":
-    poetry run black {{ARGS}}
-
 # Run tests
-test: pytest nox
+test: pytest
 
 # Run pytest tests
 pytest  *ARGS="-v":
     poetry run pytest {{ARGS}}
 
-# Run nox tests
-nox *ARGS="-x":
-    poetry run nox {{ARGS}}
+# Run sphinx build
+docs:
+    poetry run sphinx-build docs docs/_build
 
 # Add a CHANGELOG.md entry, e.g. just changelog-add added "My entry"
 changelog-add TYPE ENTRY:
-    changelog-manager add {{TYPE}} "{{ENTRY}}"
+    poetry run changelog-manager add {{TYPE}} "{{ENTRY}}"
 
 # Find out what your next released version might be based on the changelog.
 next-version:
-    changelog-manager suggest
+    poetry run changelog-manager suggest
 
 # Build and create files for a release
 prepare-release:
     #!/bin/bash
     set -xeuo pipefail
-    changelog-manager release
+    poetry run changelog-manager release
     poetry version $(changelog-manager current)
     rm -rvf dist
     poetry build
@@ -62,7 +58,7 @@ do-release:
     fi
     git add pyproject.toml CHANGELOG.md
     mkdir -p build
-    changelog-manager display --version $VERSION > build/release-notes.md
+    poetry run changelog-manager display --version $VERSION > build/release-notes.md
     if [ ! -f dist/{{project}}-${VERSION}.tar.gz ]; then
         echo "Missing expected file in dist, did you run 'just prepare-release'?"
         exit 1
