@@ -10,8 +10,9 @@ datetime.datetime(2007, 1, 25, 12, 0, tzinfo=<iso8601.Utc ...>)
 
 import datetime
 import re
-import typing
+from dataclasses import dataclass
 from decimal import Decimal
+from typing import Dict, Optional, Union
 
 __all__ = ["parse_date", "ParseError", "UTC", "FixedOffset"]
 
@@ -77,9 +78,9 @@ def FixedOffset(
 
 
 def parse_timezone(
-    matches: typing.Dict[str, str],
-    default_timezone: typing.Optional[datetime.timezone] = UTC,
-) -> typing.Optional[datetime.timezone]:
+    matches: Dict[str, str],
+    default_timezone: Optional[datetime.timezone] = UTC,
+) -> Optional[datetime.timezone]:
     """Parses ISO 8601 time zone specs into tzinfo offsets"""
     tz = matches.get("timezone", None)
     if tz == "Z":
@@ -100,7 +101,7 @@ def parse_timezone(
 
 
 def parse_date(
-    datestring: str, default_timezone: typing.Optional[datetime.timezone] = UTC
+    datestring: str, default_timezone: Optional[datetime.timezone] = UTC
 ) -> datetime.datetime:
     """Parses ISO 8601 dates into datetime objects
 
@@ -128,9 +129,7 @@ def parse_date(
 
     # Drop any Nones from the regex matches
     # TODO: check if there's a way to omit results in regexes
-    groups: typing.Dict[str, str] = {
-        k: v for k, v in m.groupdict().items() if v is not None
-    }
+    groups: Dict[str, str] = {k: v for k, v in m.groupdict().items() if v is not None}
 
     try:
         return datetime.datetime(
@@ -160,3 +159,53 @@ def is_iso8601(datestring: str) -> bool:
         return bool(m)
     except Exception as e:
         raise ParseError(e)
+
+
+@dataclass
+class Duration:
+    """Represents an ISO8601 duration"""
+
+    years: Union[Decimal, int] = 0
+    months: Union[Decimal, int] = 0
+    weeks: Union[Decimal, int] = 0
+    days: Union[Decimal, int] = 0
+    hours: Union[Decimal, int] = 0
+    minutes: Union[Decimal, int] = 0
+    seconds: Union[Decimal, int] = 0
+
+
+ISO8601_DURATION_REGEX = re.compile(
+    r"""
+    P
+    ((?P<years>[0-9,.]+)Y){0,1}
+    ((?P<months>[0-9,.]+)M){0,1}
+    ((?P<weeks>[0-9,.]+)W){0,1}
+    ((?P<days>[0-9,.]+)D){0,1}
+    (T
+        ((?P<hours>[0-9,.]+)H){0,1}
+        ((?P<minutes>[0-9,.]+)M){0,1}
+        ((?P<seconds>[0-9,.]+)S){0,1}
+    ){0,1}
+    $
+    """,
+    re.VERBOSE,
+)
+
+
+def parse_duration(duration_string: str) -> Duration:
+    """Parse a duration"""
+    m = ISO8601_DURATION_REGEX.match(duration_string)
+    if m is None:
+        raise ParseError(f"Uname to parse {duration_string!r}")
+    groups: Dict[str, str] = {
+        k: (v if v is not None else "0") for k, v in m.groupdict().items()
+    }
+    return Duration(
+        years=Decimal(groups["years"]),
+        months=Decimal(groups["months"]),
+        weeks=Decimal(groups["weeks"]),
+        days=Decimal(groups["days"]),
+        hours=Decimal(groups["hours"]),
+        minutes=Decimal(groups["minutes"]),
+        seconds=Decimal(groups["seconds"]),
+    )
