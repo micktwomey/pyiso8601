@@ -11,6 +11,7 @@ datetime.datetime(2007, 1, 25, 12, 0, tzinfo=<iso8601.Utc ...>)
 import datetime
 import re
 import typing
+from dataclasses import dataclass
 from decimal import Decimal
 
 __all__ = ["parse_date", "ParseError", "UTC", "FixedOffset"]
@@ -160,3 +161,53 @@ def is_iso8601(datestring: str) -> bool:
         return bool(m)
     except Exception as e:
         raise ParseError(e)
+
+
+@dataclass
+class Duration:
+    """Represents an ISO8601 duration"""
+    years: Decimal | int = 0
+    months: Decimal | int = 0
+    weeks: Decimal | int = 0
+    days: Decimal | int = 0
+    hours: Decimal | int = 0
+    minutes: Decimal | int = 0
+    seconds: Decimal | int = 0
+
+ISO8601_DURATION_REGEX = re.compile(
+    r"""
+    P
+    ((?P<years>[0-9]{1,4})Y){0,1}
+    ((?P<months>[0-9]{1,4})M){0,1}
+    ((?P<weeks>[0-9]{1,4})W){0,1}
+    ((?P<days>[0-9]{1,4})D){0,1}
+    (T
+        ((?P<hours>[0-9]{1,4})H){0,1}
+        ((?P<minutes>[0-9]{1,4})M){0,1}
+        ((?P<seconds>[0-9]{1,4})S){0,1}
+    ){0,1}
+    $
+    """,
+    re.VERBOSE,
+)
+
+
+def parse_duration(duration_string: str) -> Duration:
+    """Parse a duration
+
+    """
+    m = ISO8601_DURATION_REGEX.match(duration_string)
+    if m is None:
+        raise ParseError(f"Uname to parse {duration_string!r}")
+    groups: typing.Dict[str, str] = {
+        k: (v if v is not None else "0") for k, v in m.groupdict().items()
+    }
+    return Duration(
+        years=Decimal(groups["years"]),
+        months=Decimal(groups["months"]),
+        weeks=Decimal(groups["weeks"]),
+        days=Decimal(groups["days"]),
+        hours=Decimal(groups["hours"]),
+        minutes=Decimal(groups["minutes"]),
+        seconds=Decimal(groups["seconds"]),
+    )
