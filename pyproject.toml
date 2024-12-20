@@ -11,6 +11,10 @@ documentation = "https://pyiso8601.readthedocs.io/en/latest/"
 
 [tool.poetry.dependencies]
 python = ">=3.7,<4.0"
+pytest = { version = "*", optional = true }
+hypothesis = { version = "*", optional = true }
+pytz = { version = "*", optional = true }
+Sphinx = { version = "*", optional = true }
 
 [tool.poetry.group.dev.dependencies]
 mypy = "*"
@@ -21,6 +25,10 @@ pre-commit = "*"
 Sphinx = "*"
 changelog-manager = "*"
 ruff = "*"
+
+[tool.poetry.extras]
+docs = ["Sphinx"]
+test = ["pytest", "hypothesis", "pytz"]
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
