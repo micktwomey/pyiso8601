@@ -6,6 +6,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 ### Changed
+- Drop support for Python3.8
 - Switch completely to [just](https://just.systems/) for development tasts, remove nox. Rely on Github actions matrix of python versions for testing across all supported python versions.
 - Remove black, rely on ruff for formatting.
 

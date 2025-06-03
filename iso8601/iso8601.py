@@ -7,10 +7,10 @@ datetime.datetime(2007, 1, 25, 12, 0, tzinfo=<iso8601.Utc ...>)
 >>>
 
 """
+from __future__ import annotations
 
 import datetime
 import re
-import typing
 from decimal import Decimal
 
 __all__ = ["parse_date", "ParseError", "UTC", "FixedOffset"]
@@ -77,11 +77,11 @@ def FixedOffset(
 
 
 def parse_timezone(
-    matches: typing.Dict[str, str],
-    default_timezone: typing.Optional[datetime.timezone] = UTC,
-) -> typing.Optional[datetime.timezone]:
+    matches: dict[str, str],
+    default_timezone: datetime.timezone | None = UTC,
+) -> datetime.timezone | None:
     """Parses ISO 8601 time zone specs into tzinfo offsets"""
-    tz = matches.get("timezone", None)
+    tz = matches.get("timezone")
     if tz == "Z":
         return UTC
     # This isn't strictly correct, but it's common to encounter dates without
@@ -89,7 +89,7 @@ def parse_timezone(
     # Addresses issue 4.
     if tz is None:
         return default_timezone
-    sign = matches.get("tz_sign", None)
+    sign = matches.get("tz_sign")
     hours = int(matches.get("tz_hour", 0))
     minutes = int(matches.get("tz_minute", 0))
     description = f"{sign}{hours:02d}:{minutes:02d}"
@@ -100,7 +100,7 @@ def parse_timezone(
 
 
 def parse_date(
-    datestring: str, default_timezone: typing.Optional[datetime.timezone] = UTC
+    datestring: str, default_timezone: datetime.timezone | None = UTC
 ) -> datetime.datetime:
     """Parses ISO 8601 dates into datetime objects
 
@@ -128,7 +128,7 @@ def parse_date(
 
     # Drop any Nones from the regex matches
     # TODO: check if there's a way to omit results in regexes
-    groups: typing.Dict[str, str] = {
+    groups: dict[str, str] = {
         k: v for k, v in m.groupdict().items() if v is not None
     }
 

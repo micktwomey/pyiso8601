@@ -1,16 +1,16 @@
-[tool.poetry]
+[project]
 name = "iso8601"
 version = "2.1.0"
+requires-python = ">=3.9"
 description = "Simple module to parse ISO 8601 dates"
-authors = ["Michael Twomey <mick@twomeylee.name>"]
-license = "MIT"
+authors = [{name="Michael Twomey", email="mick@twomeylee.name"}]
+license = {text="MIT"}
 readme = "README.rst"
+
+[project.urls]
 homepage = "https://github.com/micktwomey/pyiso8601"
 repository = "https://github.com/micktwomey/pyiso8601"
 documentation = "https://pyiso8601.readthedocs.io/en/latest/"
-
-[tool.poetry.dependencies]
-python = ">=3.7,<4.0"
 
 [tool.poetry.group.dev.dependencies]
 mypy = "*"
@@ -23,7 +23,7 @@ changelog-manager = "*"
 ruff = "*"
 
 [build-system]
-requires = ["poetry-core>=1.0.0"]
+requires = ["poetry-core>=2.0.0"]
 build-backend = "poetry.core.masonry.api"
 
 [tool.mypy]
@@ -34,3 +34,16 @@ exclude = """\
     | ^.devenv
   )
 """
+
+[tool.ruff.lint]
+extend-select = [
+    "I",      # https://docs.astral.sh/ruff/rules/#isort-i
+    "SIM",    # https://docs.astral.sh/ruff/rules/#flake8-simplify-sim
+    "FA",     # https://docs.astral.sh/ruff/rules/#flake8-future-annotations-fa
+    "UP",     # https://docs.astral.sh/ruff/rules/#pyupgrade-up
+    "RUF100", # https://docs.astral.sh/ruff/rules/#ruff-specific-rules-ruf
+]
+
+[tool.ruff.lint.per-file-ignores]
+"docs/*.py" = ["UP009"]
+"iso8601/test_*.py" = ["UP010"]
