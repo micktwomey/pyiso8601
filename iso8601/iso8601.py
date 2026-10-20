@@ -11,7 +11,6 @@ datetime.datetime(2007, 1, 25, 12, 0, tzinfo=<iso8601.Utc ...>)
 import datetime
 import re
 import typing
-from decimal import Decimal
 
 __all__ = ["parse_date", "ParseError", "UTC", "FixedOffset"]
 
@@ -141,7 +140,7 @@ def parse_date(
             minute=int(groups.get("minute", 0)),
             second=int(groups.get("second", 0)),
             microsecond=int(
-                Decimal(f"0.{groups.get('second_fraction', 0)}") * Decimal("1000000.0")
+                groups.get("second_fraction", "0")[:6].ljust(6, "0")
             ),
             tzinfo=parse_timezone(groups, default_timezone=default_timezone),
         )
