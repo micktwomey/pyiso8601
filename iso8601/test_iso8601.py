@@ -280,3 +280,21 @@ def test_hypothesis_valid_datetimes_with_timezone(s: datetime.datetime) -> None:
     parsed = iso8601.parse_date(as_string)
     print(f"{s!r} {as_string!r} {parsed!r}")
     assert s == parsed
+
+
+@pytest.mark.parametrize(
+    "bad",
+    [
+        "2018-03-02T12:30,5",  # fractional minute was silently misread as seconds
+        "2018-03-02T12:30.5",
+        "20180302T1230,5",  # basic format variant
+        "20180302T1230.5",
+        "2018-03-02T12:3",  # single-digit "minute" is not valid ISO 8601 either
+    ],
+)
+def test_fractional_minutes_rejected(bad):
+    # Fractional minutes (like fractional hours, e.g. "12,5") are not
+    # supported, but they previously slipped through regex backtracking and
+    # were silently parsed as seconds ("12:30,5" -> 12:00:30.5).
+    with pytest.raises(iso8601.ParseError):
+        iso8601.parse_date(bad)

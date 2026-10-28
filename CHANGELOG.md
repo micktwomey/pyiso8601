@@ -5,6 +5,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+### Fixed
+- Reject fractional minutes (e.g. "2018-03-02T12:30,5") instead of silently parsing the minute as a second ("12:00:30.5").
+
 ### Changed
 - Switch completely to [just](https://just.systems/) for development tasts, remove nox. Rely on Github actions matrix of python versions for testing across all supported python versions.
 - Remove black, rely on ruff for formatting.

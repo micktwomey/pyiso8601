@@ -132,6 +132,15 @@ def parse_date(
         k: v for k, v in m.groupdict().items() if v is not None
     }
 
+    if "second" in groups and "minute" not in groups:
+        # ISO 8601 times always include minutes when seconds are present, so
+        # a match with seconds but no minutes only results from the regex
+        # backtracking over a fractional minute (e.g. "12:30,5"), which this
+        # library does not support (fractional hours like "12,5" are also
+        # rejected). Reject rather than silently misread the minute as a
+        # second.
+        raise ParseError(f"Unable to parse date string {datestring!r}")
+
     try:
         return datetime.datetime(
             year=int(groups.get("year", 0)),
