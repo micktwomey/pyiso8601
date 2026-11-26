@@ -92,6 +92,8 @@ def parse_timezone(
     sign = matches.get("tz_sign", None)
     hours = int(matches.get("tz_hour", 0))
     minutes = int(matches.get("tz_minute", 0))
+    if minutes > 59:
+        raise ParseError(f"Invalid timezone offset {sign}{hours:02d}:{minutes:02d}")
     description = f"{sign}{hours:02d}:{minutes:02d}"
     if sign == "-":
         hours = -hours

@@ -68,6 +68,17 @@ def test_parse_invalid_date(invalid_date: str, error_string: str) -> None:
     assert str(exc.value).startswith(error_string)
 
 
+@pytest.mark.parametrize("offset", ["+05:60", "-05:60", "+00:99", "-00:99"])
+def test_parse_invalid_timezone_minutes(offset: str) -> None:
+    with pytest.raises(iso8601.ParseError):
+        iso8601.parse_date(f"2020-01-01T00:00:00{offset}")
+
+
+def test_parse_timezone_minutes_upper_bound() -> None:
+    d = iso8601.parse_date("2020-01-01T00:00:00+05:59")
+    assert d.utcoffset() == datetime.timedelta(hours=5, minutes=59)
+
+
 @pytest.mark.parametrize(
     "valid_date,expected_datetime,isoformat",
     [
